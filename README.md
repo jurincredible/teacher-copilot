@@ -27,6 +27,25 @@ This version is intentionally dependency-free:
 - generated eKool-ready lesson log
 - Estonian classroom copy
 
+## Spec-Driven Development
+
+This repo includes a project-local spec-driven workflow:
+
+- `AGENTS.md` defines how Codex should work in this repository.
+- `docs/konstitutsioon.md` captures the problem, audience, constraints, and success criteria.
+- `docs/spec.md` describes the user-facing behavior and explicit non-goals.
+- `docs/prd.md` tracks implementation requirements and completion status.
+- `docs/ehituslogi.md` records decisions, discoveries, and scope changes.
+
+Before continuing implementation, read the docs in `docs/` and work one PRD requirement or user story at a time.
+
+## Local Skills
+
+Reusable project skills live in `skills/`:
+
+- `skills/spec-driven-starter` scaffolds and repairs the spec-driven workspace files.
+- `skills/frontend-design` guides distinctive, production-grade frontend design work.
+
 ## Hackathon Next Steps
 
 - Add real browser audio recording with `MediaRecorder`.
