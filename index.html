@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="et">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Copilot</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="phone-frame" aria-label="Teacher Copilot prototype">
+        <header class="topbar">
+          <div>
+            <p class="muted">Teacher Copilot</p>
+            <h1>Füüsika 11B</h1>
+          </div>
+          <button class="icon-button" aria-label="Settings">
+            <span aria-hidden="true">S</span>
+          </button>
+        </header>
+
+        <section class="lesson-card">
+          <div class="lesson-meta">
+            <span>2. tund</span>
+            <span>09:00-09:45</span>
+            <span>A-314</span>
+          </div>
+          <h2>Elektromagnetiline induktsioon</h2>
+          <p>Valmis tunnikirjelduseks, puudujateks ja kodutööks kohe tunni ajal.</p>
+          <div class="record-row">
+            <button id="recordButton" class="record-button" type="button">
+              <span class="record-dot" aria-hidden="true"></span>
+              <span id="recordLabel">Alusta tundi</span>
+            </button>
+            <div>
+              <p class="muted">Salvestus</p>
+              <strong id="timer">00:00</strong>
+            </div>
+          </div>
+        </section>
+
+        <nav class="segmented" aria-label="Lesson sections">
+          <button class="active" type="button">Tund</button>
+          <button type="button">Õpilased</button>
+          <button type="button">Logi</button>
+        </nav>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h3>Puudujad</h3>
+            <span id="absentCount">0 märgitud</span>
+          </div>
+          <div id="studentList" class="student-list"></div>
+        </section>
+
+        <section class="panel">
+          <label for="homework">Kodutöö</label>
+          <textarea id="homework" rows="3">Lahendada õpikust lk 142 ülesanded 3-5. Korrata Faraday seaduse sõnastus.</textarea>
+          <div class="quick-actions">
+            <button type="button" data-homework="Lisa: vaadata 8-minutilist simulatsiooni magnetvoost.">+ simulatsioon</button>
+            <button type="button" data-homework="Lisa: teha lühike enesetest eKoolis.">+ test</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">
+            <h3>AI tunnilogi</h3>
+            <span id="logStatus">mustand</span>
+          </div>
+          <div id="lessonLog" class="lesson-log">
+            <p><strong>Teema:</strong> elektromagnetiline induktsioon ja magnetvoog.</p>
+            <p><strong>Tunni kirjeldus:</strong> Õpilased tuletasid meelde magnetvälja mõiste, arutasid Faraday induktsiooniseadust ning lahendasid näiteülesande liikuva juhtmega.</p>
+            <p><strong>Kodutöö:</strong> Lahendada õpikust lk 142 ülesanded 3-5.</p>
+          </div>
+          <div class="action-grid">
+            <button id="generateButton" class="primary" type="button">Genereeri logi</button>
+            <button id="copyButton" type="button">Kopeeri eKooli</button>
+          </div>
+        </section>
+
+        <section class="panel compact">
+          <div class="metric">
+            <span>Hinnanguline võit</span>
+            <strong id="savedTime">7 min</strong>
+          </div>
+          <div class="metric">
+            <span>Valmidus</span>
+            <strong>demo</strong>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
