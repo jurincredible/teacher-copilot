@@ -14,3 +14,4 @@ Lisa siia ainult otsused, avastused, kompromissid ja spec'i muutused, mis aitava
 - Otsus: demo keskendub ühele õpetajale, ühele klassile ja ühele tunnile. Õpetaja saab AI väljundit enne jagamist muuta; õpilase põhiväärtus on tunni materjal ja enesekontrolli viktoriin.
 - Privaatsuspõhimõte: audio kustutatakse pärast töötlust ning säilitatavast kirjalikust õppesisust eemaldatakse ebavajalikud isikunimed ja õpilastega seostatavad detailid.
 - Rahastuse hüpotees: õpetaja ega lapsevanem ei ole esmane maksja; tõenäoline maksja on kool, koolipidaja, riik või haridusprogramm. Hackathoni eesmärk on esmalt tõestada kasutusväärtust.
+- Spec'i lisati õpetaja vaate töövoog: kalendrivaade, klassivaade ja tunni vaade koos salvestuse, teema, kokkuvõtte, automaatse konspekti PDF-i, kodutöö, manuse ja kohaloleku märkimisega.
