@@ -287,7 +287,6 @@ function renderClasses() {
 }
 
 function renderTeacherLesson() {
-  $("#topicInput").value = lesson.title;
   $("#summaryInput").value = lesson.summary;
   $("#homeworkInput").value = lesson.homework;
   $("#dueInput").value = lesson.due;
@@ -316,11 +315,10 @@ function renderAttendance() {
 }
 
 function syncLessonFromInputs() {
-  lesson.title = $("#topicInput").value.trim() || lesson.title;
+  lesson.title = $("#teacherTitle").textContent.trim() || lesson.title;
   lesson.summary = $("#summaryInput").value.trim();
   lesson.homework = $("#homeworkInput").value.trim();
   lesson.due = $("#dueInput").value;
-  $("#teacherTitle").textContent = lesson.title;
   renderStudentView();
 }
 
@@ -473,8 +471,15 @@ $("#attachmentInput").addEventListener("change", (event) => {
   $("#attachmentName").textContent = file ? file.name : "Manust pole lisatud";
 });
 
-["topicInput", "summaryInput", "homeworkInput", "dueInput"].forEach((id) => {
+["summaryInput", "homeworkInput", "dueInput"].forEach((id) => {
   $(`#${id}`).addEventListener("input", syncLessonFromInputs);
+});
+
+$("#teacherTitle").addEventListener("input", syncLessonFromInputs);
+$("#teacherTitle").addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  $("#teacherTitle").blur();
 });
 
 $("#quizMount").addEventListener("click", (event) => {
