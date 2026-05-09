@@ -714,14 +714,31 @@ body[data-theme="dark"] [data-tone] {
   grid-row: 2;
 }
 
-.due-inline label[for="dueTimeInput"] {
+.due-inline label[for="dueTimeButton"] {
   grid-column: 2;
   grid-row: 1;
 }
 
-.due-inline #dueTimeInput {
+.due-inline #dueTimeButton {
   grid-column: 2;
   grid-row: 2;
+}
+
+.time-picker-trigger {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  text-align: left;
+  font-weight: 760;
+}
+
+.time-picker-trigger.empty {
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .homework-field textarea {
@@ -1033,6 +1050,72 @@ textarea {
 
 .full {
   width: 100%;
+}
+
+.time-picker-dialog {
+  width: min(90%, 340px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.time-picker-dialog::backdrop {
+  background: rgba(39, 35, 31, 0.42);
+}
+
+.time-picker-body {
+  display: grid;
+  gap: 12px;
+}
+
+.time-stepper {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+}
+
+.time-stepper span {
+  grid-column: 1 / -1;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 760;
+  text-transform: uppercase;
+}
+
+.time-stepper strong {
+  justify-self: center;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.time-stepper button,
+.time-presets button {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  font-weight: 820;
+}
+
+.time-presets,
+.time-picker-actions {
+  display: grid;
+  gap: 8px;
+}
+
+.time-presets {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.time-picker-actions {
+  grid-template-columns: 1fr 1fr;
 }
 
 .conspect-dialog {

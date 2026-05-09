@@ -42,7 +42,7 @@
 - [x] F36: Klassikaardi valimine kuvab sama klassi ja aine 35 tunni ajaloo, mis on keritud tänase 8. mai ehk 25. tunni juurde. - seotud failid: app.js, styles.css
 - [x] F37: Päeva tunniplaani ja klassikaartide nupud ei kuva eraldi "ava" või "detail" tekstisilte; kaart ise on vajutatav. - seotud failid: app.js, styles.css
 - [x] F38: Nädala vaate päises kuvatakse nädala tundide koguarv `22 tundi`. - seotud failid: index.html
-- [x] F39: Kodutöö tähtajal on valikuline kellaaja väli, mida näidatakse õpilase vaates ainult siis, kui õpetaja selle lisab. - seotud failid: index.html, app.js, styles.css
+- [x] F39: Kodutöö tähtajal on valikuline interaktiivne kellaaja valija, mille väärtust näidatakse õpilase vaates ainult siis, kui õpetaja selle lisab. - seotud failid: index.html, app.js, styles.css
 - [x] F40: Kohaloleku toggle on paremal, kui õpilane on kohal, ning vasakul punase taustaga, kui õpilane puudub. - seotud failid: app.js, styles.css
 - [x] F41: "Kõik kohal" märgib kõik õpilased kohalolijaks ja "Lähtesta" märgib kõik õpilased puudujaks. - seotud failid: app.js
 - [x] F42: Õpetaja saab töölehe, dokumendi või PDF-i ala vajutades avada failivalija. - seotud failid: index.html, styles.css
@@ -52,7 +52,7 @@
 - [x] F46: Klassi 35 tunni ajalugu avaneb ja sulgub sama klassikaardi all ning teise klassi valimisel liigub loend selle klassi alla. - seotud failid: app.js, styles.css
 - [x] F47: Õpilase vaates on alumine navigatsioon "Tund", "Päev", "Nädal" ja "Ained". - seotud failid: index.html, app.js, styles.css
 - [x] F48: Õpilane saab vaadata päeva ja nädala õppematerjalide placeholder-loendeid ning liikuda sealt tunni detailvaatesse. - seotud failid: index.html, app.js
-- [x] F49: Kodutöö kellaaja väli ei kasuta brauseri kellaikooniga time-input'i ega tekita telefonivaates horisontaalset kerimist. - seotud failid: index.html, styles.css
+- [x] F49: Kodutöö kellaaja valija ei kasuta brauseri kellaikooniga time-input'i ega tekita telefonivaates horisontaalset kerimist. - seotud failid: index.html, styles.css
 - [x] F50: Õpilase "Ained" vaade kuvab ainult ainekaardid ning aine avamisel näitab selle aine 35 tunni loendit, mis on keritud tänase tunni juurde. - seotud failid: index.html, app.js, styles.css
 - [x] F51: Õpilase aine loendi tunni valimine avab "Tund" detailvaate. - seotud failid: app.js
 - [x] F52: Õpetaja päeva tunniplaan ja õpilase päeva tunnid kuvavad tunni järjekorranumbri päeva sees. - seotud failid: app.js

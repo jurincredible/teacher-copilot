@@ -137,8 +137,11 @@
                 <div class="due-inline">
                   <label for="dueInput">Tähtaeg</label>
                   <input id="dueInput" type="date" />
-                  <label for="dueTimeInput">Kell</label>
-                  <input id="dueTimeInput" type="text" inputmode="numeric" maxlength="5" placeholder="--:--" autocomplete="off" />
+                  <label for="dueTimeButton">Kell</label>
+                  <input id="dueTimeInput" type="hidden" />
+                  <button id="dueTimeButton" class="time-picker-trigger empty" type="button" aria-haspopup="dialog" aria-controls="timePickerDialog">
+                    Määra kell
+                  </button>
                 </div>
               </div>
               <input id="attachmentInput" class="file-input" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.rtf,.odt,.ods,.odp,image/*" />
@@ -253,6 +256,36 @@
             <div id="studentSubjectsList" class="class-list"></div>
           </section>
         </section>
+
+        <dialog id="timePickerDialog" class="time-picker-dialog">
+          <div class="panel-title">
+            <h3>Kodutöö kell</h3>
+            <button id="closeTimePickerButton" class="ghost-button" type="button">Sulge</button>
+          </div>
+          <div class="time-picker-body">
+            <div class="time-stepper" aria-label="Vali tund">
+              <span>Tund</span>
+              <button type="button" data-time-adjust="hour" data-step="-1" aria-label="Vähenda tundi">-</button>
+              <strong id="timeHourValue">15</strong>
+              <button type="button" data-time-adjust="hour" data-step="1" aria-label="Suurenda tundi">+</button>
+            </div>
+            <div class="time-stepper" aria-label="Vali minut">
+              <span>Minut</span>
+              <button type="button" data-time-adjust="minute" data-step="-5" aria-label="Vähenda minuteid">-</button>
+              <strong id="timeMinuteValue">00</strong>
+              <button type="button" data-time-adjust="minute" data-step="5" aria-label="Suurenda minuteid">+</button>
+            </div>
+            <div class="time-presets" aria-label="Kiired kellaajad">
+              <button type="button" data-time-preset="09:00">09:00</button>
+              <button type="button" data-time-preset="12:00">12:00</button>
+              <button type="button" data-time-preset="15:00">15:00</button>
+            </div>
+            <div class="time-picker-actions">
+              <button id="clearTimeButton" class="secondary" type="button">Eemalda kell</button>
+              <button id="saveTimeButton" class="primary" type="button">Valmis</button>
+            </div>
+          </div>
+        </dialog>
 
         <dialog id="conspectDialog" class="conspect-dialog">
           <header class="modal-head">

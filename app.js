@@ -238,6 +238,8 @@ const state = {
   published: true
 };
 
+let timePickerDraft = { hour: 15, minute: 0 };
+
 const $ = (selector) => document.querySelector(selector);
 const $$ = (selector) => [...document.querySelectorAll(selector)];
 
@@ -538,6 +540,7 @@ function renderTeacherLesson() {
   $("#homeworkInput").value = lesson.homework;
   $("#dueInput").value = lesson.due;
   $("#dueTimeInput").value = lesson.dueTime;
+  updateDueTimeControl();
   $("#teacherTitle").textContent = lesson.title;
   $("#teacherNotes").innerHTML = lesson.renderedNotes || renderLatex(lesson.notes);
 }
@@ -569,7 +572,57 @@ function syncLessonFromInputs() {
   lesson.homework = $("#homeworkInput").value.trim();
   lesson.due = $("#dueInput").value;
   lesson.dueTime = $("#dueTimeInput").value;
+  updateDueTimeControl();
   renderStudentView();
+}
+
+function parseTimeValue(value) {
+  const match = /^([01]\d|2[0-3]):([0-5]\d)$/.exec(value || "");
+  if (!match) return { hour: 15, minute: 0 };
+  return { hour: Number(match[1]), minute: Number(match[2]) };
+}
+
+function formatTimeValue({ hour, minute }) {
+  return `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}`;
+}
+
+function updateDueTimeControl() {
+  const value = $("#dueTimeInput").value;
+  const button = $("#dueTimeButton");
+  button.textContent = value || "Määra kell";
+  button.classList.toggle("empty", !value);
+  button.setAttribute("aria-label", value ? `Kodutöö kell ${value}` : "Määra kodutöö kell");
+}
+
+function updateTimePickerDisplay() {
+  $("#timeHourValue").textContent = String(timePickerDraft.hour).padStart(2, "0");
+  $("#timeMinuteValue").textContent = String(timePickerDraft.minute).padStart(2, "0");
+}
+
+function openTimePicker() {
+  timePickerDraft = parseTimeValue($("#dueTimeInput").value);
+  updateTimePickerDisplay();
+  $("#timePickerDialog").showModal();
+}
+
+function adjustTimePart(part, step) {
+  if (part === "hour") {
+    timePickerDraft.hour = (timePickerDraft.hour + step + 24) % 24;
+  } else {
+    const total = timePickerDraft.hour * 60 + timePickerDraft.minute + step;
+    const normalized = (total + 24 * 60) % (24 * 60);
+    timePickerDraft.hour = Math.floor(normalized / 60);
+    timePickerDraft.minute = normalized % 60;
+  }
+  updateTimePickerDisplay();
+}
+
+function saveDueTime(value) {
+  $("#dueTimeInput").value = value;
+  lesson.dueTime = value;
+  updateDueTimeControl();
+  renderStudentView();
+  $("#timePickerDialog").close();
 }
 
 function publishLesson() {
@@ -819,6 +872,23 @@ $("#attachmentInput").addEventListener("change", (event) => {
 ["summaryInput", "homeworkInput", "dueInput", "dueTimeInput"].forEach((id) => {
   $(`#${id}`).addEventListener("input", syncLessonFromInputs);
 });
+
+$("#dueTimeButton").addEventListener("click", openTimePicker);
+$("#closeTimePickerButton").addEventListener("click", () => $("#timePickerDialog").close());
+$("#timePickerDialog").addEventListener("click", (event) => {
+  const adjuster = event.target.closest("[data-time-adjust]");
+  if (adjuster) {
+    adjustTimePart(adjuster.dataset.timeAdjust, Number(adjuster.dataset.step));
+    return;
+  }
+  const preset = event.target.closest("[data-time-preset]");
+  if (preset) {
+    timePickerDraft = parseTimeValue(preset.dataset.timePreset);
+    updateTimePickerDisplay();
+  }
+});
+$("#clearTimeButton").addEventListener("click", () => saveDueTime(""));
+$("#saveTimeButton").addEventListener("click", () => saveDueTime(formatTimeValue(timePickerDraft)));
 
 $("#teacherTitle").addEventListener("input", syncLessonFromInputs);
 $("#teacherTitle").addEventListener("keydown", (event) => {

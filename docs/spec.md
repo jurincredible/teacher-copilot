@@ -60,7 +60,7 @@ Esmane fookus on ühel õpetajal, tema klassidel, ühel konkreetsel tunnil ja se
 - Detailsem õppematerjal peab toetama LaTeX-vormingut, kui tunni sisu sisaldab valemeid või eriala-spetsiifilist matemaatilist kirjaviisi.
 - "Kodutöö" on muudetav mitmerealine tekstiväli, mis võib sisaldada ülesande ja oodatava väljundi kirjeldust.
 - Kodutöö tähtaeg kuvatakse ja muudetakse samas kodutöö plokis, mitte eraldi paneelina.
-- Kodutöö tähtajal saab olla valikuline kellaaeg.
+- Kodutöö tähtajal saab olla valikuline kellaaeg, mida õpetaja saab telefonis puudutustega valida.
 - Kodutööl on tähtaeg, mille süsteem võib pakkuda automaatselt tunni konteksti põhjal, näiteks järgmiseks tunniks või järgmiseks nädalaks. Kui kalendri- või tunniplaaniandmed on olemas, peaks kodutöö maanduma loogiliselt järgmise seotud tunni juurde.
 - Õpetaja saab tunnile lisada manuse töölehe, dokumendi või PDF-ina.
 - Õpetaja näeb õpilaste nimekirja.
