@@ -67,7 +67,7 @@ Esmane fookus on ühel õpetajal, tema klassidel, ühel konkreetsel tunnil ja se
 - Kohaloleku vaikimisi eeldus on, et õpilased on kohal.
 - Iga õpilase rea juures on checkbox, toggle või sarnane kiire kontroll, millega õpetaja märgib puudujad.
 - Õpetaja saab vajadusel kõik õpilased korraga kohalolijaks märkida või valiku kiiresti lähtestada.
-- Kohaloleku toggle on vaikimisi paremal ja tähendab "kohal"; vasakul punase taustaga olek tähendab "puudub".
+- Kohaloleku toggle on vaikimisi paremal ja neutraalne ning tähendab "kohal"; vasakul punase taustaga olek tähendab "puudub".
 - "Kõik kohal" märgib kõik õpilased kohalolijaks ning "Lähtesta" märgib kõik õpilased puudujaks.
 - Hilinemise ja märkuse lisamine võib hilisemas versioonis olla rea lisategevus, näiteks swipe'i või detailvaate kaudu, kuid see ei ole esimese demo põhivoog.
 

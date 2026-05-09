@@ -43,7 +43,7 @@
 - [x] F37: Päeva tunniplaani ja klassikaartide nupud ei kuva eraldi "ava" või "detail" tekstisilte; kaart ise on vajutatav. - seotud failid: app.js, styles.css
 - [x] F38: Nädala vaate päises kuvatakse nädala tundide koguarv `22 tundi`. - seotud failid: index.html
 - [x] F39: Kodutöö tähtajal on valikuline interaktiivne kellaaja valija, mille väärtust näidatakse õpilase vaates ainult siis, kui õpetaja selle lisab. - seotud failid: index.html, app.js, styles.css
-- [x] F40: Kohaloleku toggle on paremal, kui õpilane on kohal, ning vasakul punase taustaga, kui õpilane puudub. - seotud failid: app.js, styles.css
+- [x] F40: Kohaloleku toggle on paremal ja neutraalne, kui õpilane on kohal, ning vasakul punase taustaga, kui õpilane puudub. - seotud failid: app.js, styles.css
 - [x] F41: "Kõik kohal" märgib kõik õpilased kohalolijaks ja "Lähtesta" märgib kõik õpilased puudujaks. - seotud failid: app.js
 - [x] F42: Õpetaja saab töölehe, dokumendi või PDF-i ala vajutades avada failivalija. - seotud failid: index.html, styles.css
 - [x] F43: Avaldamise nupp kasutab mitmust "Avalda õpilastele". - seotud failid: index.html

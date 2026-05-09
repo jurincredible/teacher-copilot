@@ -36,3 +36,4 @@ Lisa siia ainult otsused, avastused, kompromissid ja spec'i muutused, mis aitava
 - Annotatsioonide põhjal eemaldati rakendusest nähtav QR-koodi avamise UI nii ülaribalt kui hamburgeri menüüst. Õpilase päeva tunniloendi sisemine kõrguspiirang eemaldati, et viies tund ei jääks väikese kerimisala taha peitu.
 - Annotatsiooni põhjal muudeti rakenduse vaikimisi avanev teema tumedaks; hamburgeri menüü teemanupu algtekst on nüüd "Hele režiim".
 - Kodutöö kellaaja tekstisisestus asendati telefonisõbraliku custom valijaga: nupp avab modal'i tunni ja 5-minuti sammudega ning kiirete presetitega, vältides native `time` input'i.
+- Kohaloleku "kohal" oleku toggle muudeti neutraalseks, et see ei kasutaks õpetaja oranži aktsenti; puudumise punane olek jäi alles.

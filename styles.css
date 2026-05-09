@@ -908,12 +908,12 @@ textarea {
 }
 
 .toggle.active {
-  background: var(--accent);
+  background: var(--surface-3);
 }
 
 .toggle.active::after {
   transform: translateX(20px);
-  background: var(--accent-text);
+  background: var(--text);
 }
 
 .sticky-actions {
