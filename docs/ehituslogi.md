@@ -34,3 +34,4 @@ Lisa siia ainult otsused, avastused, kompromissid ja spec'i muutused, mis aitava
 - Päevakava tekstiveerg joondati vasakule ühtlase algusega. Primaarsed nupud viidi tumedamale Microsoft Edge'i sinisele, õigete viktoriinivastuste tagasiside rohelisele joonele ning õpilase nädala vaade kasutab nüüd 5-7 tunniga päevi ja kogutundide päisepilli.
 - Õpilase päeva tunninuppude tekstipaigutus muudeti ülemisest servast algavaks grid-paigutuseks ning nupule anti lisakõrgus, et aine rida ei lõikuks telefonivaates alumise servaga.
 - Annotatsioonide põhjal eemaldati rakendusest nähtav QR-koodi avamise UI nii ülaribalt kui hamburgeri menüüst. Õpilase päeva tunniloendi sisemine kõrguspiirang eemaldati, et viies tund ei jääks väikese kerimisala taha peitu.
+- Annotatsiooni põhjal muudeti rakenduse vaikimisi avanev teema tumedaks; hamburgeri menüü teemanupu algtekst on nüüd "Hele režiim".

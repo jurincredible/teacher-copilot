@@ -86,6 +86,7 @@
 - [x] N19: Primaarsed nupud kasutavad tumedamat Microsoft Edge'i sinist ning õiged viktoriinivastused rohelise joonega tagasisidet. - seotud failid: styles.css
 - [x] N20: Õpilase päeva tunninuppude kuupäev, pealkiri ja aine mahuvad telefonivaates nupu sisse ega lõiku alumise servaga. - seotud failid: styles.css
 - [x] N21: Õpilase päeva tunniloend ei lõika viiendat tundi sisemise kerimisala taha. - seotud failid: styles.css
+- [x] N22: Rakendus avaneb vaikimisi tumedas režiimis ning menüüs on kohe valik heleda režiimi avamiseks. - seotud failid: index.html
 
 ## Valmis märkimise reegel
 
