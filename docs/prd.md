@@ -9,7 +9,7 @@
 - [x] F5: Õpetaja saab klassi avada ja näha selle klassi jooksva õppeaasta tundide loendit. - seotud failid: index.html, app.js
 - [x] F6: Klassi tundide loend on vaikimisi keritud viimasele juba toimunud tunnile. - seotud failid: index.html, app.js
 - [x] F7: Kui praegu on tunni aeg, näeb õpetaja tunni vaates nuppu "Salvesta", millega saab alustada simuleeritud salvestust või ettevalmistatud häälefaili kasutamist. - seotud failid: index.html, app.js
-- [x] F7a: Live-tunni salvestuse UI võimaldab salvestust alustada, pausile panna, jätkata, lõpetada ja tulemuste genereerimise käivitada. - seotud failid: index.html, app.js
+- [x] F7a: Live-tunni salvestuse UI võimaldab salvestust alustada, pausile panna, jätkata ja lõpetada. - seotud failid: index.html, app.js
 - [x] F8: Õpetaja saab tunni vaates muuta üherealist "Teema" välja. - seotud failid: index.html, app.js
 - [x] F9: Õpetaja saab tunni vaates muuta suurt "Kokkuvõte" tekstivälja. - seotud failid: index.html, app.js
 - [x] F10: Süsteem kuvab tunni vaates "Konspekt" või detailse õppematerjali, mis on seotud simuleeritud salvestuse või demoandmetega. - seotud failid: index.html, app.js
@@ -32,6 +32,36 @@
 - [x] F26: Matemaatikat või valemeid sisaldav õppesisu kuvatakse õpilase vaates loetavalt. - seotud failid: index.html, app.js, styles.css
 - [x] F27: Kodutööl on tähtaeg, mille süsteem pakub tunni konteksti põhjal ja mida õpetaja saab muuta. - seotud failid: index.html, app.js
 - [x] F28: Õpilase mini-viktoriini tulemus on lokaalne hetketagasiside ning sama viktoriini saab uuesti teha. - seotud failid: index.html, app.js
+- [x] F29: Päevavaates kuvatakse praegune kellaaeg formaadis `13:24`. - seotud failid: index.html, app.js
+- [x] F30: Õpetaja saab avada "Nädala tunnid" vaate, kus on 5 tööpäeva valikut kuupäeva, nädalapäeva ja tundide arvuga. - seotud failid: index.html, app.js, styles.css
+- [x] F31: Õpetaja menüü järjestus on: Tund, Päev, Nädal, Klassid ja ajalugu, QR-kood. - seotud failid: index.html
+- [x] F32: Tunni vaates ei kuvata eraldi "Genereeri tulemused" nuppu; õpetaja põhitegevus on mustandi ülevaatus ja avaldamine õpilasele. - seotud failid: index.html, app.js, styles.css
+- [x] F33: Kodutöö tähtaeg on integreeritud samasse plokki kodutöö sisuga, mitte eraldi paneelina. - seotud failid: index.html, styles.css
+- [x] F34: Õpetaja alumise navigatsiooni järjestus on Tund, Päev, Nädal, Klassid ning rakendus avaneb vaikimisi Päev vaates. - seotud failid: index.html, app.js
+- [x] F35: Nädala vaates tööpäeva valimine avab vastava päeva Päev vaate koos selle päeva tunniplaani placeholder-sisuga. - seotud failid: app.js
+- [x] F36: Klassikaardi valimine kuvab sama klassi ja aine 35 tunni ajaloo, mis on keritud tänase 8. mai ehk 25. tunni juurde. - seotud failid: app.js, styles.css
+- [x] F37: Päeva tunniplaani ja klassikaartide nupud ei kuva eraldi "ava" või "detail" tekstisilte; kaart ise on vajutatav. - seotud failid: app.js, styles.css
+- [x] F38: Nädala vaate päises kuvatakse nädala tundide koguarv `22 tundi`. - seotud failid: index.html
+- [x] F39: Kodutöö tähtajal on valikuline kellaaja väli, mida näidatakse õpilase vaates ainult siis, kui õpetaja selle lisab. - seotud failid: index.html, app.js, styles.css
+- [x] F40: Kohaloleku toggle on paremal, kui õpilane on kohal, ning vasakul punase taustaga, kui õpilane puudub. - seotud failid: app.js, styles.css
+- [x] F41: "Kõik kohal" märgib kõik õpilased kohalolijaks ja "Lähtesta" märgib kõik õpilased puudujaks. - seotud failid: app.js
+- [x] F42: Õpetaja saab töölehe, dokumendi või PDF-i ala vajutades avada failivalija. - seotud failid: index.html, styles.css
+- [x] F43: Avaldamise nupp kasutab mitmust "Avalda õpilastele". - seotud failid: index.html
+- [x] F44: Õpetaja menüü lühinimed on "Tund", "Päev" ja "Nädal". - seotud failid: index.html
+- [x] F45: Tume režiim on liigutatud hamburgeri menüüsse, mitte ülemise riba eraldi ikooniks. - seotud failid: index.html, app.js, styles.css
+- [x] F46: Klassi 35 tunni ajalugu avaneb ja sulgub sama klassikaardi all ning teise klassi valimisel liigub loend selle klassi alla. - seotud failid: app.js, styles.css
+- [x] F47: Õpilase vaates on alumine navigatsioon "Tund", "Päev", "Nädal" ja "Ained". - seotud failid: index.html, app.js, styles.css
+- [x] F48: Õpilane saab vaadata päeva ja nädala õppematerjalide placeholder-loendeid ning liikuda sealt tunni detailvaatesse. - seotud failid: index.html, app.js
+- [x] F49: Kodutöö kellaaja väli ei kasuta brauseri kellaikooniga time-input'i ega tekita telefonivaates horisontaalset kerimist. - seotud failid: index.html, styles.css
+- [x] F50: Õpilase "Ained" vaade kuvab ainult ainekaardid ning aine avamisel näitab selle aine 35 tunni loendit, mis on keritud tänase tunni juurde. - seotud failid: index.html, app.js, styles.css
+- [x] F51: Õpilase aine loendi tunni valimine avab "Tund" detailvaate. - seotud failid: app.js
+- [x] F52: Õpetaja päeva tunniplaan ja õpilase päeva tunnid kuvavad tunni järjekorranumbri päeva sees. - seotud failid: app.js
+- [x] F53: Õpilase nädala vaates kasutatakse sõnastust "Nädala tunnid" ning päevavaates "Tänased tunnid". - seotud failid: index.html
+- [x] F54: Õpilase nädala vaate päevakaardid kuvavad "X tundi", mitte "X materjali". - seotud failid: app.js
+- [x] F55: Rolli vahetades maandub kasutaja vaikimisi vastava rolli Päev vaatesse. - seotud failid: index.html, app.js
+- [x] F56: Õpilase nädala vaates on igal päeval demo jaoks 5-7 tundi. - seotud failid: app.js
+- [x] F57: Õpilase nädala vaate päises kuvatakse nädala tundide koguarv. - seotud failid: index.html, app.js
+- [x] F58: Päevakava tunni tekst on vasakjoondatud ning algab ühtlasest tekstiveerust. - seotud failid: styles.css
 
 ## Mittefunktsionaalsed nõuded
 
@@ -47,6 +77,13 @@
 - [x] N10: Õpilase vaade ei näita salvestuse töötlemise tehnilisi detaile ega õpetaja sisemist mustandit. - seotud failid: index.html, app.js
 - [x] N11: Sama tunni õpetaja ja õpilase vaated kasutavad kooskõlalist õppesisu. - seotud failid: index.html, app.js
 - [x] N12: Detailne õppematerjal toetab LaTeX-vormingut, kui tunni sisu sisaldab valemeid. - seotud failid: index.html, app.js, styles.css
+- [x] N13: Õpetaja telefoninavigatsioon mahutab päeva, nädala, klasside ja tunni vaated ilma teksti lõikamata. - seotud failid: index.html, styles.css
+- [x] N14: Visuaalne stiil on Notioni-laadne neutraalne tööriista-UI ilma pastellgradientideta, õhukeste piirjoonte ja selgelt klikitavate kaartidega. - seotud failid: styles.css
+- [x] N15: Kasutaja saab lülitada heleda ja tumeda režiimi vahel. - seotud failid: index.html, app.js, styles.css
+- [x] N16: Õpetaja ja õpilase vaade kasutavad eraldi rollipõhiseid aktsentvärve, säilitades Notioni-laadse tagasihoidliku neutraalse põhistiili. - seotud failid: styles.css, app.js
+- [x] N17: Konspekti eelvaate tekst ei tuhmu halliks ega fade'i lõpus, et hele ja tume režiim püsiks loetav. - seotud failid: styles.css
+- [x] N18: Päeva-, nädala- ja ainekaardid kasutavad mitut tagasihoidlikku ainetooni, et liides ei tunduks kliiniline ja õpetaja/õpilase rollid eristuksid. - seotud failid: styles.css, app.js
+- [x] N19: Primaarsed nupud kasutavad tumedamat Microsoft Edge'i sinist ning õiged viktoriinivastused rohelise joonega tagasisidet. - seotud failid: styles.css
 
 ## Valmis märkimise reegel
 

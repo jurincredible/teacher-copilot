@@ -6,7 +6,7 @@
     <title>ClassOS prototüüp</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body data-theme="light">
     <main class="stage">
       <section class="phone" aria-label="ClassOS telefoniprototüüp">
         <header class="appbar">
@@ -36,9 +36,11 @@
             <button class="active" type="button" data-role="teacher">Õpetaja</button>
             <button type="button" data-role="student">Õpilane</button>
           </div>
-          <button class="menu-action" type="button" data-open-view="calendar">Päeva tunnid</button>
+          <button class="menu-action" type="button" data-open-view="lesson">Tund</button>
+          <button class="menu-action" type="button" data-open-view="calendar">Päev</button>
+          <button class="menu-action" type="button" data-open-view="week">Nädal</button>
           <button class="menu-action" type="button" data-open-view="classes">Klassid ja ajalugu</button>
-          <button class="menu-action" type="button" data-open-view="lesson">Avatud tund</button>
+          <button id="themeButton" class="menu-action theme-action" type="button" aria-label="Lülita tume režiim">Tume režiim</button>
           <button id="drawerQrButton" class="menu-action accent" type="button">Näita QR-koodi</button>
           <p class="privacy-note">Audio on demos simuleeritud. Pärast töötlust säilib ainult õpetaja üle vaadatud kirjalik õppesisu.</p>
         </aside>
@@ -47,23 +49,24 @@
 
         <section id="teacherView" class="screen active" aria-label="Õpetaja töövoog">
           <nav class="tabs" aria-label="Õpetaja vaated">
-            <button class="active" type="button" data-open-view="calendar">Päev</button>
-            <button type="button" data-open-view="classes">Klassid</button>
             <button type="button" data-open-view="lesson">Tund</button>
+            <button class="active" type="button" data-open-view="calendar">Päev</button>
+            <button type="button" data-open-view="week">Nädal</button>
+            <button type="button" data-open-view="classes">Klassid</button>
           </nav>
 
           <section id="calendarPanel" class="view-panel active">
             <div class="section-title">
               <div>
-                <p class="eyebrow">Täna, 8. mai</p>
+                <p id="dayLabel" class="eyebrow">Täna, 8. mai</p>
                 <h2>Päeva tunniplaan</h2>
               </div>
-              <span class="status-pill live">praegu</span>
+              <span id="currentTime" class="status-pill live">--:--</span>
             </div>
             <div id="currentLessonPrompt" class="callout">
               <div>
                 <strong>Kas praegu on see tund?</strong>
-                <span>11B füüsika, elektromagnetiline induktsioon</span>
+                <span id="currentLessonText">11B füüsika, elektromagnetiline induktsioon</span>
               </div>
               <div class="split-actions">
                 <button class="primary small" type="button" data-open-view="lesson">Jah</button>
@@ -73,22 +76,26 @@
             <div id="scheduleList" class="schedule-list"></div>
           </section>
 
+          <section id="weekPanel" class="view-panel">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">4.-8. mai</p>
+                <h2>Nädala tunnid</h2>
+              </div>
+              <span id="weekTotal" class="status-pill">22 tundi</span>
+            </div>
+            <div id="weekList" class="week-list"></div>
+          </section>
+
           <section id="classesPanel" class="view-panel">
             <div class="section-title">
               <div>
                 <p class="eyebrow">Minu klassid</p>
-                <h2>Klassi tunnid</h2>
+                <h2>Klassid ja tunnid</h2>
               </div>
               <span class="status-pill">35 tundi</span>
             </div>
             <div id="classList" class="class-list"></div>
-            <div class="panel">
-              <div class="panel-title">
-                <h3>11B füüsika</h3>
-                <span>keritud viimasele toimunud tunnile</span>
-              </div>
-              <div id="lessonHistory" class="timeline"></div>
-            </div>
           </section>
 
           <section id="lessonPanel" class="view-panel">
@@ -128,16 +135,18 @@
                 <div id="teacherNotes" class="notes compiled-tex"></div>
                 <p class="microcopy">Puuduta, et avada kogu konspekt suuremas vaates.</p>
               </div>
-              <label class="field">
-                <span>Kodutöö</span>
+              <div class="field homework-field">
+                <label for="homeworkInput">Kodutöö</label>
                 <textarea id="homeworkInput" rows="4"></textarea>
-              </label>
-              <label class="field">
-                <span>Tähtaeg</span>
-                <input id="dueInput" type="date" />
-              </label>
-              <label class="attachment">
-                <input id="attachmentInput" type="file" />
+                <div class="due-inline">
+                  <label for="dueInput">Tähtaeg</label>
+                  <input id="dueInput" type="date" />
+                  <label for="dueTimeInput">Kell</label>
+                  <input id="dueTimeInput" type="text" inputmode="numeric" maxlength="5" placeholder="--:--" autocomplete="off" />
+                </div>
+              </div>
+              <input id="attachmentInput" class="file-input" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.rtf,.odt,.ods,.odp,image/*" />
+              <label class="attachment" for="attachmentInput">
                 <span>Lisa tööleht, dokument või PDF</span>
                 <strong id="attachmentName">Manust pole lisatud</strong>
               </label>
@@ -156,29 +165,20 @@
             </section>
 
             <div class="sticky-actions">
-              <button id="generateButton" class="secondary" type="button">Genereeri tulemused</button>
-              <button id="publishButton" class="primary" type="button">Avalda õpilasele</button>
+              <button id="publishButton" class="primary" type="button">Avalda õpilastele</button>
             </div>
           </section>
         </section>
 
         <section id="studentView" class="screen" aria-label="Õpilase töövoog">
-          <section class="student-home">
-            <div class="section-title">
-              <div>
-                <p class="eyebrow">Õpilase vaade</p>
-                <h2>Leia tänane materjal</h2>
-              </div>
-              <span class="status-pill">11B</span>
-            </div>
-            <button class="subject-card active" type="button">
-              <span>Füüsika</span>
-              <strong>Elektromagnetiline induktsioon</strong>
-            </button>
-            <div id="studentLessons" class="timeline compact-list"></div>
-          </section>
+          <nav class="tabs student-tabs" aria-label="Õpilase vaated">
+            <button type="button" data-student-view="lesson">Tund</button>
+            <button class="active" type="button" data-student-view="day">Päev</button>
+            <button type="button" data-student-view="week">Nädal</button>
+            <button type="button" data-student-view="subjects">Ained</button>
+          </nav>
 
-          <section class="student-detail">
+          <section id="studentLessonPanel" class="student-panel student-detail">
             <div class="lesson-hero">
               <div>
                 <p id="studentMeta" class="eyebrow">Füüsika · 8. mai · 45 min</p>
@@ -222,6 +222,39 @@
               <div id="quizMount"></div>
               <button id="resetQuizButton" class="secondary full" type="button">Tee uuesti</button>
             </section>
+          </section>
+
+          <section id="studentDayPanel" class="student-panel active">
+            <div class="section-title">
+              <div>
+                <p id="studentDayLabel" class="eyebrow">Täna, 8. mai</p>
+                <h2>Tänased tunnid</h2>
+              </div>
+              <span class="status-pill">11B</span>
+            </div>
+            <div id="studentDayList" class="timeline compact-list"></div>
+          </section>
+
+          <section id="studentWeekPanel" class="student-panel">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">4.-8. mai</p>
+                <h2>Nädala tunnid</h2>
+              </div>
+              <span id="studentWeekTotal" class="status-pill">27 tundi</span>
+            </div>
+            <div id="studentWeekList" class="week-list"></div>
+          </section>
+
+          <section id="studentSubjectsPanel" class="student-panel student-home">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Õpilase vaade</p>
+                <h2>Ained</h2>
+              </div>
+              <span class="status-pill">11B</span>
+            </div>
+            <div id="studentSubjectsList" class="class-list"></div>
           </section>
         </section>
 

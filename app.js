@@ -4,6 +4,7 @@ const lesson = {
   className: "11B",
   date: "2026-05-08",
   due: "2026-05-15",
+  dueTime: "",
   summary:
     "Tunnis seostasime magnetvoo muutumise induktsioonvoolu tekkimisega. Õpilased nägid, kuidas liikuva juhtme näites muutub voog ning miks Lenzi reegel aitab voolu suunda põhjendada.",
   homework:
@@ -14,7 +15,7 @@ const lesson = {
   renderedNotes: "",
   concepts: [
     ["Magnetvoog", "Kirjeldab, kui palju magnetvälja läbib kontuuri pinda."],
-    ["Induktsioonvool", "Tekib siis, kui magnetvoog kontuuris muutub."],
+    ["Induktsioonivool", "Tekib siis, kui magnetvoog kontuuris muutub."],
     ["Lenzi reegel", "Indutseeritud voolu suund on selline, et see takistab muutust, mis voolu tekitas."]
   ]
 };
@@ -26,21 +27,173 @@ const schedule = [
   ["12:00", "9C loodusõpetus", "Energia muundumine"]
 ];
 
-const classes = [
-  ["11B", "Füüsika", "viimane tund täna"],
-  ["12A", "Füüsika", "järgmine tund esmaspäeval"],
-  ["10A", "Matemaatika", "kontrolltöö ettevalmistus"]
+const periodByTime = {
+  "08:10": 1,
+  "09:00": 2,
+  "10:05": 3,
+  "11:10": 4,
+  "12:00": 5,
+  "13:00": 6
+};
+
+const weekDays = [
+  {
+    date: "4. mai",
+    weekday: "Esmaspäev",
+    label: "Esmaspäev, 4. mai",
+    lessons: [
+      ["08:10", "9C loodusõpetus", "Energia muundumine"],
+      ["09:00", "11B füüsika", "Magnetväli ja jõujooned"],
+      ["10:05", "10A matemaatika", "Funktsiooni graafik"],
+      ["12:00", "12A füüsika", "Laine levimine"],
+      ["13:00", "11B füüsika", "Harjutused ja arutelu"]
+    ]
+  },
+  {
+    date: "5. mai",
+    weekday: "Teisipäev",
+    label: "Teisipäev, 5. mai",
+    lessons: [
+      ["08:10", "10A matemaatika", "Tuletise mõiste"],
+      ["09:00", "12A füüsika", "Elektriväli"],
+      ["10:05", "11B füüsika", "Magnetvoog"],
+      ["12:00", "9C loodusõpetus", "Aine olekud"]
+    ]
+  },
+  {
+    date: "6. mai",
+    weekday: "Kolmapäev",
+    label: "Kolmapäev, 6. mai",
+    lessons: [
+      ["08:10", "11B füüsika", "Faraday katsed"],
+      ["09:00", "10A matemaatika", "Tuletise arvutamine"],
+      ["10:05", "12A füüsika", "Kondensaator"],
+      ["11:10", "9C loodusõpetus", "Soojusülekanne"],
+      ["12:00", "11B füüsika", "Induktsioonivool"],
+      ["13:00", "10A matemaatika", "Rakendusülesanded"]
+    ]
+  },
+  {
+    date: "7. mai",
+    weekday: "Neljapäev",
+    label: "Neljapäev, 7. mai",
+    lessons: [
+      ["09:00", "12A füüsika", "Vahelduvvoolu sissejuhatus"],
+      ["10:05", "11B füüsika", "Lenzi reegel"],
+      ["12:00", "10A matemaatika", "Kontrolltöö kordamine"]
+    ]
+  },
+  {
+    date: "8. mai",
+    weekday: "Reede",
+    label: "Täna, 8. mai",
+    lessons: schedule
+  }
 ];
 
-const history = Array.from({ length: 35 }, (_, index) => {
-  const number = index + 1;
-  return {
-    number,
-    title: number === 35 ? lesson.title : `Füüsika tund ${number}`,
-    date: number === 35 ? "8. mai" : `${Math.max(1, number - 4)}. aprill`,
-    active: number === 35
-  };
-});
+const studentWeekDays = [
+  {
+    date: "4. mai",
+    weekday: "Esmaspäev",
+    label: "Esmaspäev, 4. mai",
+    lessons: [
+      ["08:10", "Füüsika", "Magnetväli ja jõujooned"],
+      ["09:00", "Matemaatika", "Funktsiooni graafik"],
+      ["10:05", "Eesti keel", "Arutleva teksti ülesehitus"],
+      ["11:10", "Inglise keel", "Reported speech"],
+      ["12:00", "Keemia", "Aatomi ehitus"],
+      ["13:00", "Ajalugu", "Külma sõja algus"]
+    ]
+  },
+  {
+    date: "5. mai",
+    weekday: "Teisipäev",
+    label: "Teisipäev, 5. mai",
+    lessons: [
+      ["08:10", "Matemaatika", "Tuletise mõiste"],
+      ["09:00", "Füüsika", "Magnetvoog"],
+      ["10:05", "Bioloogia", "Raku energia"],
+      ["11:10", "Geograafia", "Kliimavöötmed"],
+      ["12:00", "Kirjandus", "Novelli analüüs"]
+    ]
+  },
+  {
+    date: "6. mai",
+    weekday: "Kolmapäev",
+    label: "Kolmapäev, 6. mai",
+    lessons: [
+      ["08:10", "Füüsika", "Faraday katsed"],
+      ["09:00", "Matemaatika", "Tuletise arvutamine"],
+      ["10:05", "Inglise keel", "Argument essay"],
+      ["11:10", "Kehaline kasvatus", "Vastupidavus"],
+      ["12:00", "Füüsika", "Induktsioonivool"],
+      ["13:00", "Kunst", "Kompositsioon"]
+    ]
+  },
+  {
+    date: "7. mai",
+    weekday: "Neljapäev",
+    label: "Neljapäev, 7. mai",
+    lessons: [
+      ["08:10", "Ajalugu", "Euroopa pärast II maailmasõda"],
+      ["09:00", "Füüsika", "Lenzi reegel"],
+      ["10:05", "Matemaatika", "Kontrolltöö kordamine"],
+      ["11:10", "Keemia", "Keemiline side"],
+      ["12:00", "Eesti keel", "Stiil ja sõnavara"]
+    ]
+  },
+  {
+    date: "8. mai",
+    weekday: "Reede",
+    label: "Täna, 8. mai",
+    lessons: [
+      ["08:10", "Matemaatika", "Tuletise rakendused"],
+      ["09:00", "Füüsika", lesson.title],
+      ["10:05", "Inglise keel", "Listening practice"],
+      ["11:10", "Bioloogia", "Närvisüsteem"],
+      ["12:00", "Loodusõpetus", "Energia muundumine"]
+    ]
+  }
+];
+
+const classes = [
+  {
+    name: "11B",
+    subject: "Füüsika",
+    note: "viimane tund täna",
+    todayLesson: 25,
+    activeTitle: lesson.title
+  },
+  {
+    name: "12A",
+    subject: "Füüsika",
+    note: "järgmine tund esmaspäeval",
+    todayLesson: 25,
+    activeTitle: "Vahelduvvool"
+  },
+  {
+    name: "10A",
+    subject: "Matemaatika",
+    note: "kontrolltöö ettevalmistus",
+    todayLesson: 25,
+    activeTitle: "Tuletise rakendused"
+  }
+];
+
+const studentSubjects = [
+  {
+    name: "Füüsika",
+    tone: "cool",
+    todayLesson: 25,
+    activeTitle: lesson.title
+  },
+  {
+    name: "Matemaatika",
+    tone: "warm",
+    todayLesson: 25,
+    activeTitle: "Tuletise rakendused"
+  }
+];
 
 const students = [
   "Anna-Maria Kask",
@@ -73,6 +226,11 @@ const quiz = [
 const state = {
   role: "teacher",
   teacherPanel: "calendar",
+  weekDay: 4,
+  studentPanel: "day",
+  studentDay: 4,
+  activeClass: 0,
+  activeStudentSubject: null,
   recording: "idle",
   elapsed: 0,
   absent: new Set(),
@@ -219,14 +377,22 @@ function closeDrawer() {
   $("#menuButton").setAttribute("aria-expanded", "false");
 }
 
-function setRole(role) {
+function setRole(role, { resetPanel = false } = {}) {
   state.role = role;
   teacherView.classList.toggle("active", role === "teacher");
   studentView.classList.toggle("active", role === "student");
+  document.body.classList.toggle("student-mode", role === "student");
   roleLabel.textContent = role === "teacher" ? "Õpetaja vaade" : "Õpilase vaade";
   $$("[data-role]").forEach((button) => {
     button.classList.toggle("active", button.dataset.role === role);
   });
+  if (resetPanel && role === "teacher") {
+    setTeacherPanel("calendar");
+    return;
+  }
+  if (resetPanel && role === "student") {
+    setStudentPanel("day");
+  }
   closeDrawer();
 }
 
@@ -234,23 +400,56 @@ function setTeacherPanel(panel) {
   state.teacherPanel = panel;
   $$(".view-panel").forEach((view) => view.classList.remove("active"));
   $(`#${panel}Panel`)?.classList.add("active");
-  $$(".tabs button").forEach((button) => {
+  $$("#teacherView .tabs button").forEach((button) => {
     button.classList.toggle("active", button.dataset.openView === panel);
   });
+  if (panel === "classes") requestAnimationFrame(scrollHistoryToActive);
   closeDrawer();
 }
 
+function setStudentPanel(panel) {
+  state.studentPanel = panel;
+  $$(".student-panel").forEach((view) => view.classList.remove("active"));
+  $(`#student${panel[0].toUpperCase()}${panel.slice(1)}Panel`)?.classList.add("active");
+  $$("#studentView [data-student-view]").forEach((button) => {
+    button.classList.toggle("active", button.dataset.studentView === panel);
+  });
+}
+
+function getLessonPeriod(time, fallbackIndex = 0) {
+  return periodByTime[time] || fallbackIndex + 1;
+}
+
+function getToneForGroup(group) {
+  const normalized = group.toLowerCase();
+  if (normalized.includes("matemaatika")) return "warm";
+  if (normalized.includes("füüsika")) return "cool";
+  if (normalized.includes("loodus")) return "green";
+  return "rose";
+}
+
+function getToneForIndex(index) {
+  return ["cool", "warm", "green", "rose", "accent"][index % 5];
+}
+
+function getSelectedDay() {
+  return weekDays[state.weekDay];
+}
+
 function renderSchedule() {
-  $("#scheduleList").innerHTML = schedule
+  const day = getSelectedDay();
+  $("#dayLabel").textContent = day.label;
+  $("#currentLessonPrompt").hidden = state.weekDay !== 4;
+  $("#currentLessonText").textContent = `${lesson.className} ${lesson.subject.toLowerCase()}, ${lesson.title.toLowerCase()}`;
+  $("#scheduleList").innerHTML = day.lessons
     .map(
       ([time, group, title], index) => `
-        <button class="schedule-item ${index === 1 ? "active" : ""}" type="button" data-open-view="lesson">
+        <button class="schedule-item ${state.weekDay === 4 && index === 1 ? "active" : ""}" type="button" data-open-view="lesson" data-tone="${getToneForGroup(group)}">
           <span class="schedule-time">${time}</span>
           <span>
-            <strong>${group}</strong>
+            <strong>${getLessonPeriod(time, index)}. ${group}</strong>
             <span>${title}</span>
           </span>
-          <span class="status-pill ${index === 1 ? "live" : ""}">${index === 1 ? "ava" : "detail"}</span>
         </button>
       `
     )
@@ -259,27 +458,75 @@ function renderSchedule() {
 
 function renderClasses() {
   $("#classList").innerHTML = classes
-    .map(
-      ([name, subject, note]) => `
-        <button class="class-card" type="button">
+    .map((currentClass, index) => {
+      const expanded = index === state.activeClass;
+      return `
+        <div class="class-group ${expanded ? "expanded" : ""}">
+        <button class="class-card ${expanded ? "active" : ""}" type="button" data-class-index="${index}" data-tone="${getToneForGroup(`${currentClass.name} ${currentClass.subject}`)}" aria-expanded="${expanded}">
           <span>
-            <strong>${name} ${subject}</strong>
-            <span>${note}</span>
+            <strong>${currentClass.name} ${currentClass.subject}</strong>
+            <span>${currentClass.note}</span>
           </span>
-          <span class="status-pill">ava</span>
+        </button>
+        ${
+          expanded
+            ? `<div class="class-history panel">
+                <div class="panel-title">
+                  <h3>${currentClass.name} ${currentClass.subject.toLowerCase()}</h3>
+                  <span>tund ${currentClass.todayLesson} / 35</span>
+                </div>
+                <div class="timeline">${renderClassHistory(currentClass)}</div>
+              </div>`
+            : ""
+        }
+        </div>
+      `;
+    })
+    .join("");
+
+  scrollHistoryToActive();
+}
+
+function renderClassHistory(currentClass) {
+  return Array.from({ length: 35 }, (_, index) => {
+    const number = index + 1;
+    return {
+      number,
+      title: number === currentClass.todayLesson ? currentClass.activeTitle : `${currentClass.subject} tund ${number}`,
+      date: number === currentClass.todayLesson ? "8. mai" : `${Math.max(1, number - 17)}. aprill`,
+      active: number === currentClass.todayLesson
+    };
+  })
+    .map(
+      (item) => `
+        <button class="timeline-item ${item.active ? "active" : ""}" type="button" data-open-view="lesson" data-tone="${getToneForGroup(currentClass.subject)}">
+          <span class="timeline-date">${item.date} · tund ${item.number}</span>
+          <strong>${item.title}</strong>
+          <span>${item.active ? "viimane toimunud tund" : "õppematerjal olemas"}</span>
         </button>
       `
     )
     .join("");
+}
 
-  $("#lessonHistory").innerHTML = history
-    .slice(-6)
+function scrollHistoryToActive() {
+  const timeline = $("#classList .class-group.expanded .timeline");
+  const activeItem = timeline?.querySelector(".timeline-item.active");
+  if (!timeline || !activeItem) return;
+  timeline.scrollTop = Math.max(0, activeItem.offsetTop - timeline.offsetTop - 150);
+}
+
+function renderWeek() {
+  $("#weekTotal").textContent = `${weekDays.reduce((sum, day) => sum + day.lessons.length, 0)} tundi`;
+  $("#weekList").innerHTML = weekDays
     .map(
-      (item) => `
-        <button class="timeline-item ${item.active ? "active" : ""}" type="button" data-open-view="lesson">
-          <span class="timeline-date">${item.date} · tund ${item.number}</span>
-          <strong>${item.title}</strong>
-          <span>${item.active ? "viimane toimunud tund" : "õppematerjal olemas"}</span>
+      ({ date, weekday, lessons }, index) => `
+        <button class="week-day ${index === state.weekDay ? "active" : ""}" type="button" data-week-day="${index}" data-tone="${getToneForIndex(index)}">
+          <span>
+            <strong>${weekday}</strong>
+            <span>${date}</span>
+          </span>
+          <span class="status-pill ${index === state.weekDay ? "live" : ""}">${lessons.length} tundi</span>
         </button>
       `
     )
@@ -290,6 +537,7 @@ function renderTeacherLesson() {
   $("#summaryInput").value = lesson.summary;
   $("#homeworkInput").value = lesson.homework;
   $("#dueInput").value = lesson.due;
+  $("#dueTimeInput").value = lesson.dueTime;
   $("#teacherTitle").textContent = lesson.title;
   $("#teacherNotes").innerHTML = lesson.renderedNotes || renderLatex(lesson.notes);
 }
@@ -298,20 +546,21 @@ function renderAttendance() {
   $("#studentList").innerHTML = students
     .map((student) => {
       const absent = state.absent.has(student);
+      const present = !absent;
       return `
         <div class="student-row">
           <span>
             <strong>${student}</strong>
             <span>${absent ? "puudub" : "kohal"}</span>
           </span>
-          <button class="toggle ${absent ? "active" : ""}" type="button" aria-label="${student} puudub" data-student="${student}"></button>
+          <button class="toggle ${present ? "active" : ""}" type="button" aria-label="${student} ${present ? "kohal" : "puudub"}" aria-pressed="${present}" data-student="${student}"></button>
         </div>
       `;
     })
     .join("");
 
   const count = state.absent.size;
-  $("#absentCount").textContent = count ? `${count} puudub` : "Kõik kohal";
+  $("#absentCount").textContent = count ? `Puudub: ${count}` : "Kõik kohal";
 }
 
 function syncLessonFromInputs() {
@@ -319,23 +568,7 @@ function syncLessonFromInputs() {
   lesson.summary = $("#summaryInput").value.trim();
   lesson.homework = $("#homeworkInput").value.trim();
   lesson.due = $("#dueInput").value;
-  renderStudentView();
-}
-
-function generateResults() {
-  syncLessonFromInputs();
-  const cleanSummary = lesson.summary
-    .replace(/^(AI mustand:\s*)+/i, "")
-    .replace(
-      /(\s*Õpetaja peaks enne jagamist kontrollima, et mõisted ja ülesanded oleksid täpsed\.)+$/i,
-      ""
-    );
-  lesson.summary =
-    "AI mustand: " +
-    cleanSummary +
-    " Õpetaja peaks enne jagamist kontrollima, et mõisted ja ülesanded oleksid täpsed.";
-  $("#summaryInput").value = lesson.summary;
-  $("#draftBadge").textContent = "AI mustand";
+  lesson.dueTime = $("#dueTimeInput").value;
   renderStudentView();
 }
 
@@ -348,23 +581,104 @@ function publishLesson() {
 }
 
 function renderStudentView() {
+  const currentStudentDay = studentWeekDays[state.studentDay];
+  const studentDayLessons = currentStudentDay.lessons.map((entry, index) => ({ entry, index }));
+  $("#studentWeekTotal").textContent = `${studentWeekDays.reduce((sum, day) => sum + day.lessons.length, 0)} tundi`;
+  $("#studentDayLabel").textContent = currentStudentDay.label;
   $("#studentTitle").textContent = lesson.title;
   $("#studentMeta").textContent = `${lesson.subject} · 8. mai · 45 min`;
   $("#studentSummary").textContent = lesson.summary.replace(/^(AI mustand:\s*)+/i, "");
   $("#studentNotes").innerHTML = lesson.renderedNotes ? renderTexDocument(lesson.texSource, { preview: true }) : renderLatex(lesson.notes);
   $("#studentHomework").textContent = lesson.homework;
-  $("#studentDue").textContent = `Tähtaeg ${new Date(lesson.due).toLocaleDateString("et-EE")}`;
+  $("#studentDue").textContent = `Tähtaeg ${new Date(lesson.due).toLocaleDateString("et-EE")}${lesson.dueTime ? ` kell ${lesson.dueTime}` : ""}`;
   $("#conceptList").innerHTML = lesson.concepts
     .map(([title, body]) => `<div class="concept"><strong>${title}</strong><span>${body}</span></div>`)
     .join("");
-  $("#studentLessons").innerHTML = `
-    <button class="timeline-item active" type="button">
-      <span class="timeline-date">8. mai · 45 min</span>
-      <strong>${lesson.title}</strong>
-      <span>Kokkuvõte, mõisted, kodutöö ja enesekontroll</span>
-    </button>
-  `;
+  $("#studentDayList").innerHTML = studentDayLessons
+    .map(
+      ({ entry: [time, group, title], index }) => `
+        <button class="timeline-item ${title === lesson.title ? "active" : ""}" type="button" data-student-lesson data-tone="${getToneForGroup(group)}">
+          <span class="timeline-date">${currentStudentDay.date} · ${time}</span>
+          <strong>${getLessonPeriod(time, index)}. ${title}</strong>
+          <span>${group}</span>
+        </button>
+      `
+    )
+    .join("");
+  $("#studentWeekList").innerHTML = studentWeekDays
+    .map((day, index) => {
+      return `
+        <button class="week-day ${index === state.studentDay ? "active" : ""}" type="button" data-student-week-day="${index}" data-tone="${getToneForIndex(index)}">
+          <span>
+            <strong>${day.weekday}</strong>
+            <span>${day.date}</span>
+          </span>
+          <span class="status-pill ${index === state.studentDay ? "live" : ""}">${day.lessons.length} tundi</span>
+        </button>
+      `;
+    })
+    .join("");
+  renderStudentSubjects();
   renderQuiz();
+}
+
+function renderStudentSubjects() {
+  $("#studentSubjectsList").innerHTML = studentSubjects
+    .map((subject, index) => {
+      const expanded = index === state.activeStudentSubject;
+      return `
+        <div class="class-group ${expanded ? "expanded" : ""}">
+          <button class="subject-card ${expanded ? "active" : ""}" type="button" data-student-subject-index="${index}" data-tone="${subject.tone}" aria-expanded="${expanded}">
+            <span>
+              <strong>${subject.name}</strong>
+              <span>35 tundi õppeaastas</span>
+            </span>
+          </button>
+          ${
+            expanded
+              ? `<div class="class-history panel">
+                  <div class="panel-title">
+                    <h3>${subject.name}</h3>
+                    <span>tund ${subject.todayLesson} / 35</span>
+                  </div>
+                  <div class="timeline">${renderStudentSubjectHistory(subject)}</div>
+                </div>`
+              : ""
+          }
+        </div>
+      `;
+    })
+    .join("");
+  requestAnimationFrame(scrollStudentSubjectToActive);
+}
+
+function renderStudentSubjectHistory(subject) {
+  return Array.from({ length: 35 }, (_, index) => {
+    const number = index + 1;
+    return {
+      number,
+      title: number === subject.todayLesson ? subject.activeTitle : `${subject.name} tund ${number}`,
+      date: number === subject.todayLesson ? "8. mai" : `${Math.max(1, number - 17)}. aprill`,
+      active: number === subject.todayLesson
+    };
+  })
+    .map(
+      (item) => `
+        <button class="timeline-item ${item.active ? "active" : ""}" type="button" data-student-year-lesson data-tone="${subject.tone}">
+          <span class="timeline-date">${item.date} · tund ${item.number}</span>
+          <strong>${item.title}</strong>
+          <span>${item.active ? "tänane tund" : "õppematerjal olemas"}</span>
+        </button>
+      `
+    )
+    .join("");
+}
+
+function scrollStudentSubjectToActive() {
+  const timeline = $("#studentSubjectsList .class-group.expanded .timeline");
+  const activeItem = timeline?.querySelector(".timeline-item.active");
+  if (!timeline || !activeItem) return;
+  timeline.scrollTop = Math.max(0, activeItem.offsetTop - timeline.offsetTop - 150);
 }
 
 function renderQuiz() {
@@ -420,19 +734,41 @@ function updateRecorder() {
   }
   if (state.recording === "finished") {
     button.textContent = "Uus salvestus";
-    $("#recordStatus").textContent = "Salvestus lõppes. Tulemused saab genereerida.";
+    $("#recordStatus").textContent = "Salvestus lõppes. Vaata mustand üle ja avalda õpilasele.";
   }
+}
+
+function updateCurrentTime() {
+  $("#currentTime").textContent = new Date().toLocaleTimeString("et-EE", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
+}
+
+function toggleTheme() {
+  const nextTheme = document.body.dataset.theme === "dark" ? "light" : "dark";
+  document.body.dataset.theme = nextTheme;
+  $("#themeButton").textContent = nextTheme === "dark" ? "Hele režiim" : "Tume režiim";
+  $("#themeButton").setAttribute("aria-label", nextTheme === "dark" ? "Lülita hele režiim" : "Lülita tume režiim");
 }
 
 $("#menuButton").addEventListener("click", openDrawer);
 $("#closeMenuButton").addEventListener("click", closeDrawer);
 overlay.addEventListener("click", closeDrawer);
-$$("[data-role]").forEach((button) => button.addEventListener("click", () => setRole(button.dataset.role)));
+$("#themeButton").addEventListener("click", toggleTheme);
+$$("[data-role]").forEach((button) => button.addEventListener("click", () => setRole(button.dataset.role, { resetPanel: true })));
 document.addEventListener("click", (event) => {
   const target = event.target.closest("[data-open-view]");
   if (!target) return;
   setRole("teacher");
   setTeacherPanel(target.dataset.openView);
+});
+document.addEventListener("click", (event) => {
+  const target = event.target.closest("[data-student-view]");
+  if (!target) return;
+  setRole("student");
+  setStudentPanel(target.dataset.studentView);
 });
 
 $("#recordButton").addEventListener("click", () => {
@@ -447,14 +783,13 @@ $("#finishRecordButton").addEventListener("click", () => {
   updateRecorder();
 });
 
-$("#generateButton").addEventListener("click", generateResults);
 $("#publishButton").addEventListener("click", publishLesson);
 $("#allPresentButton").addEventListener("click", () => {
   state.absent.clear();
   renderAttendance();
 });
 $("#resetAttendanceButton").addEventListener("click", () => {
-  state.absent = new Set(["Rasmus Saar"]);
+  state.absent = new Set(students);
   renderAttendance();
 });
 $("#studentList").addEventListener("click", (event) => {
@@ -466,12 +801,29 @@ $("#studentList").addEventListener("click", (event) => {
   renderAttendance();
 });
 
+$("#weekList").addEventListener("click", (event) => {
+  const day = event.target.closest("[data-week-day]");
+  if (!day) return;
+  state.weekDay = Number(day.dataset.weekDay);
+  renderWeek();
+  renderSchedule();
+  setTeacherPanel("calendar");
+});
+
+$("#classList").addEventListener("click", (event) => {
+  const card = event.target.closest("[data-class-index]");
+  if (!card) return;
+  const nextClass = Number(card.dataset.classIndex);
+  state.activeClass = state.activeClass === nextClass ? null : nextClass;
+  renderClasses();
+});
+
 $("#attachmentInput").addEventListener("change", (event) => {
   const file = event.target.files[0];
   $("#attachmentName").textContent = file ? file.name : "Manust pole lisatud";
 });
 
-["summaryInput", "homeworkInput", "dueInput"].forEach((id) => {
+["summaryInput", "homeworkInput", "dueInput", "dueTimeInput"].forEach((id) => {
   $(`#${id}`).addEventListener("input", syncLessonFromInputs);
 });
 
@@ -508,12 +860,29 @@ $$("[data-open-conspect]").forEach((card) => {
 
 $("#closeConspectButton").addEventListener("click", () => $("#conspectDialog").close());
 
-$(".subject-card").addEventListener("click", () => {
-  $(".student-detail").scrollIntoView({ behavior: "smooth", block: "start" });
+$("#studentDayList").addEventListener("click", (event) => {
+  if (!event.target.closest("[data-student-lesson]")) return;
+  setStudentPanel("lesson");
 });
 
-$("#studentLessons").addEventListener("click", () => {
-  $(".student-detail").scrollIntoView({ behavior: "smooth", block: "start" });
+$("#studentSubjectsList").addEventListener("click", (event) => {
+  if (event.target.closest("[data-student-year-lesson]")) {
+    setStudentPanel("lesson");
+    return;
+  }
+  const subject = event.target.closest("[data-student-subject-index]");
+  if (!subject) return;
+  const nextSubject = Number(subject.dataset.studentSubjectIndex);
+  state.activeStudentSubject = state.activeStudentSubject === nextSubject ? null : nextSubject;
+  renderStudentSubjects();
+});
+
+$("#studentWeekList").addEventListener("click", (event) => {
+  const day = event.target.closest("[data-student-week-day]");
+  if (!day) return;
+  state.studentDay = Number(day.dataset.studentWeekDay);
+  renderStudentView();
+  setStudentPanel("day");
 });
 
 $("#qrButton").addEventListener("click", openQr);
@@ -526,9 +895,13 @@ setInterval(() => {
   timer.textContent = formatTime(state.elapsed);
 }, 1000);
 
+setInterval(updateCurrentTime, 30 * 1000);
+
 renderSchedule();
+renderWeek();
 renderClasses();
 renderTeacherLesson();
 renderAttendance();
 updateRecorder();
+updateCurrentTime();
 loadConspect().then(renderStudentView);
