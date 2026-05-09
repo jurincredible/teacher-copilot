@@ -19,9 +19,6 @@
             <p id="roleLabel" class="eyebrow">Õpetaja vaade</p>
             <h1>ClassOS</h1>
           </div>
-          <button id="qrButton" class="icon-button qr-mark" type="button" aria-label="Ava demo QR">
-            <span></span>
-          </button>
         </header>
 
         <aside id="drawer" class="drawer" aria-hidden="true">
@@ -41,7 +38,6 @@
           <button class="menu-action" type="button" data-open-view="week">Nädal</button>
           <button class="menu-action" type="button" data-open-view="classes">Klassid ja ajalugu</button>
           <button id="themeButton" class="menu-action theme-action" type="button" aria-label="Lülita tume režiim">Tume režiim</button>
-          <button id="drawerQrButton" class="menu-action accent" type="button">Näita QR-koodi</button>
           <p class="privacy-note">Audio on demos simuleeritud. Pärast töötlust säilib ainult õpetaja üle vaadatud kirjalik õppesisu.</p>
         </aside>
 
@@ -257,15 +253,6 @@
             <div id="studentSubjectsList" class="class-list"></div>
           </section>
         </section>
-
-        <dialog id="qrDialog" class="qr-dialog">
-          <div class="panel-title">
-            <h3>Demo QR</h3>
-            <button id="closeQrButton" class="ghost-button" type="button">Sulge</button>
-          </div>
-          <img id="qrImage" alt="QR-kood demo avamiseks telefonis" />
-          <p id="demoUrl" class="microcopy"></p>
-        </dialog>
 
         <dialog id="conspectDialog" class="conspect-dialog">
           <header class="modal-head">

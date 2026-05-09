@@ -11,7 +11,6 @@ Telefonikeskne hackathoni prototüüp, mis muudab ühe tunni salvestuse või dem
 - Õpilane näeb sama tunni kokkuvõtet, konspekti, võtmemõisteid, kodutööd ja puudutud tunni järeleaitavat osa.
 - Õpilane saab teha mini-viktoriini; tulemus on ainult lokaalne enesekontroll.
 - Õpetaja ja õpilase vaate vahetamine käib hamburgeri menüüst.
-- Demo QR on rakenduses eraldi nupuna, et telefoni peal kiirelt sama URL avada.
 
 ## Käivitamine
 
@@ -27,7 +26,7 @@ Seejärel ava brauseris:
 http://127.0.0.1:4173
 ```
 
-Telefoniga samas võrgus demo avamiseks kasuta arvuti lokaalset võrgu-IP-d kujul `http://<IP>:4173` või ava rakenduse QR-vaade.
+Telefoniga samas võrgus demo avamiseks kasuta arvuti lokaalset võrgu-IP-d kujul `http://<IP>:4173`.
 
 ## Tehniline seis
 

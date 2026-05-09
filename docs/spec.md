@@ -103,7 +103,7 @@ Esmane fookus on ühel õpetajal, tema klassidel, ühel konkreetsel tunnil ja se
 
 Õpetaja esimene vaade on praktiline tööpäevavaade, mitte turunduslik avaleht. UI peab tunduma tuttav nagu kalender ja klassipäevik: vasakul või ülemises osas on päeva tunnid, klassivaates on õpetaja klassid ning tunni vaates on kõige nähtavamad tegevused salvestamine, teema, kokkuvõte, konspekt, kodutöö, manus ja kohaloleku märkimine.
 
-Õpetaja alumise navigatsiooni järjestus on: Tund, Päev, Nädal, Klassid. Rakendus avaneb vaikimisi Päev vaates. Õpetaja menüü järjestus on: Tund, Päev, Nädal, Klassid ja ajalugu, tume režiim ning QR-koodi avamine. Kui kasutaja vahetab õpetaja ja õpilase vaate vahel, maandub uus roll vaikimisi Päev vaatesse.
+Õpetaja alumise navigatsiooni järjestus on: Tund, Päev, Nädal, Klassid. Rakendus avaneb vaikimisi Päev vaates. Õpetaja menüü järjestus on: Tund, Päev, Nädal, Klassid ja ajalugu ning tume režiim. QR-koodi avamist rakenduse UI-s ei kuvata. Kui kasutaja vahetab õpetaja ja õpilase vaate vahel, maandub uus roll vaikimisi Päev vaatesse.
 
 Visuaalne stiil liigub Notioni-laadse tööriista-UI suunas: neutraalne hele või tume pind, õhukesed piirjooned, pehmed varjud, selged klikitavad kaardid ja vähene värvikasutus. Pastelseid kaardigradiente ei kasutata. Tunnikaarte ei märgistata eraldi tekstidega "ava" või "detail"; kaart ise peab tunduma vajutatava nupuna.
 

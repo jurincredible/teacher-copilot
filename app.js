@@ -704,13 +704,6 @@ function renderQuiz() {
       .join("") + `<p class="microcopy">Tulemus selles sessioonis: ${score}/${quiz.length}. Tulemust ei saadeta õpetajale.</p>`;
 }
 
-function openQr() {
-  const url = window.location.href;
-  $("#qrImage").src = `https://api.qrserver.com/v1/create-qr-code/?size=420x420&data=${encodeURIComponent(url)}`;
-  $("#demoUrl").textContent = url;
-  $("#qrDialog").showModal();
-}
-
 function formatTime(seconds) {
   const minutes = String(Math.floor(seconds / 60)).padStart(2, "0");
   const rest = String(seconds % 60).padStart(2, "0");
@@ -884,10 +877,6 @@ $("#studentWeekList").addEventListener("click", (event) => {
   renderStudentView();
   setStudentPanel("day");
 });
-
-$("#qrButton").addEventListener("click", openQr);
-$("#drawerQrButton").addEventListener("click", openQr);
-$("#closeQrButton").addEventListener("click", () => $("#qrDialog").close());
 
 setInterval(() => {
   if (state.recording !== "recording") return;

@@ -34,7 +34,7 @@
 - [x] F28: Õpilase mini-viktoriini tulemus on lokaalne hetketagasiside ning sama viktoriini saab uuesti teha. - seotud failid: index.html, app.js
 - [x] F29: Päevavaates kuvatakse praegune kellaaeg formaadis `13:24`. - seotud failid: index.html, app.js
 - [x] F30: Õpetaja saab avada "Nädala tunnid" vaate, kus on 5 tööpäeva valikut kuupäeva, nädalapäeva ja tundide arvuga. - seotud failid: index.html, app.js, styles.css
-- [x] F31: Õpetaja menüü järjestus on: Tund, Päev, Nädal, Klassid ja ajalugu, QR-kood. - seotud failid: index.html
+- [x] F31: Õpetaja menüü järjestus on: Tund, Päev, Nädal, Klassid ja ajalugu, tume režiim; QR-koodi avamist menüüs ega ülaribal ei kuvata. - seotud failid: index.html, app.js, styles.css
 - [x] F32: Tunni vaates ei kuvata eraldi "Genereeri tulemused" nuppu; õpetaja põhitegevus on mustandi ülevaatus ja avaldamine õpilasele. - seotud failid: index.html, app.js, styles.css
 - [x] F33: Kodutöö tähtaeg on integreeritud samasse plokki kodutöö sisuga, mitte eraldi paneelina. - seotud failid: index.html, styles.css
 - [x] F34: Õpetaja alumise navigatsiooni järjestus on Tund, Päev, Nädal, Klassid ning rakendus avaneb vaikimisi Päev vaates. - seotud failid: index.html, app.js
@@ -85,6 +85,7 @@
 - [x] N18: Päeva-, nädala- ja ainekaardid kasutavad mitut tagasihoidlikku ainetooni, et liides ei tunduks kliiniline ja õpetaja/õpilase rollid eristuksid. - seotud failid: styles.css, app.js
 - [x] N19: Primaarsed nupud kasutavad tumedamat Microsoft Edge'i sinist ning õiged viktoriinivastused rohelise joonega tagasisidet. - seotud failid: styles.css
 - [x] N20: Õpilase päeva tunninuppude kuupäev, pealkiri ja aine mahuvad telefonivaates nupu sisse ega lõiku alumise servaga. - seotud failid: styles.css
+- [x] N21: Õpilase päeva tunniloend ei lõika viiendat tundi sisemise kerimisala taha. - seotud failid: styles.css
 
 ## Valmis märkimise reegel
 
