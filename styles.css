@@ -383,6 +383,13 @@ h3 {
   transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease, box-shadow 0.14s ease;
 }
 
+.timeline-item {
+  display: grid;
+  align-content: start;
+  gap: 3px;
+  line-height: 1.2;
+}
+
 .schedule-item,
 .class-card,
 .subject-card,
@@ -453,6 +460,11 @@ h3 {
   margin-top: 4px;
 }
 
+.timeline-item strong {
+  margin-top: 0;
+  line-height: 1.2;
+}
+
 .schedule-item span:last-child,
 .class-card span,
 .subject-card span,
@@ -460,6 +472,7 @@ h3 {
 .timeline-item span {
   color: var(--muted);
   font-size: 13px;
+  line-height: 1.2;
 }
 
 [data-tone] {
@@ -975,6 +988,11 @@ textarea {
 
 .compact-list {
   margin-bottom: 4px;
+}
+
+.compact-list .timeline-item {
+  min-height: 86px;
+  padding: 10px 12px 14px;
 }
 
 .readable h3 {

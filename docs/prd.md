@@ -84,6 +84,7 @@
 - [x] N17: Konspekti eelvaate tekst ei tuhmu halliks ega fade'i lõpus, et hele ja tume režiim püsiks loetav. - seotud failid: styles.css
 - [x] N18: Päeva-, nädala- ja ainekaardid kasutavad mitut tagasihoidlikku ainetooni, et liides ei tunduks kliiniline ja õpetaja/õpilase rollid eristuksid. - seotud failid: styles.css, app.js
 - [x] N19: Primaarsed nupud kasutavad tumedamat Microsoft Edge'i sinist ning õiged viktoriinivastused rohelise joonega tagasisidet. - seotud failid: styles.css
+- [x] N20: Õpilase päeva tunninuppude kuupäev, pealkiri ja aine mahuvad telefonivaates nupu sisse ega lõiku alumise servaga. - seotud failid: styles.css
 
 ## Valmis märkimise reegel
 
