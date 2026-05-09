@@ -20,7 +20,7 @@ Koolijuht, õppejuht ja kooliülene teadmistebaas jäävad hackathoni demos tule
 
 Täna on paljud kooli digitööriistad nagu eKool ja Stuudium eelkõige administratiivsed: hinded, puudumised, kodutööd, suhtlus. Need ei talleta tunni sisulist "ajutegevust": kuidas õpetaja teemat selgitas, millised seosed tekkisid, millised kohad vajavad kordamist ja milline õppematerjal konkreetsest tunnist välja kasvas.
 
-Teacher Copilot uurib, kas tunnis tekkivast audio- või tekstipõhisest sisendist saab teha kohese õppimist toetava tulemuse: kokkuvõte, detailne PDF, kordamisküsimused, flashcard'id, viktoriin ja kodutöö kirjeldus. Pikemas plaanis võib mitme õpetaja kasutuse korral tekkida kooli digitaalne teadmistebaas, kuid hackathoni prototüüp keskendub ühele õpetajale, ühele klassile ja ühele tunnile.
+ClassOS uurib, kas tunnis tekkivast audio- või tekstipõhisest sisendist saab teha kohese õppimist toetava tulemuse: kokkuvõte, detailne õppematerjal, kordamisküsimused, flashcard'id, viktoriin ja kodutöö kirjeldus. Pikemas plaanis võib mitme õpetaja kasutuse korral tekkida kooli digitaalne teadmistebaas, kuid hackathoni prototüüp keskendub ühele õpetajale, ühele klassile ja ühele tunnile.
 
 Ideaalne tuleviku töövoog algab sellest, et õpetaja avab rakenduse enne tundi. Rakendus saab aru, mis päev, kellaaeg ja tund parasjagu on, ning pakub õpetajale võimalust siseneda õigesse tundi, muuta tunni infot ja alustada salvestust. Tunni vaates näeb õpetaja õpilasi ning saab kiiresti märkida kohaloleku, puudumise või hilinemise. Hackathoni demos võib see töövoog olla osaliselt simuleeritud: tund võib olla juba toimunud ning tulemused võivad olla ette genereeritud või näidisandmete põhjal loodud.
 
@@ -28,10 +28,10 @@ Ideaalne tuleviku töövoog algab sellest, et õpetaja avab rakenduse enne tundi
 
 Hackathoni demos on kaks kasutajavaadet:
 
-- Õpetaja vaade: õpetaja näeb ühe tunni tulemust, saab AI loodud kokkuvõtet ja PDF-i kontrollida, muuta ning valmistada ette ekspordi eKooli/Stuudiumi või muu jagamise jaoks.
+- Õpetaja vaade: õpetaja näeb ühe tunni tulemust, saab AI loodud kokkuvõtet, detailset õppematerjali, kodutööd ja kohalolekut kontrollida ning valmistada ette jagamise eKooli/Stuudiumi või muu kanali jaoks. Esimeses versioonis on muudetavad vähemalt kokkuvõte, kodutöö ja kohalolek.
 - Õpilase vaade: õpilane näeb konkreetse tunni õppematerjali, kodutööd ning saab teha enesekontrolliks viktoriini. Flashcard'id on kasulik sekundaarne võimalus, kuid mitte peamine demo väärtus.
 
-Demo ei keskendu koolijuhile, mitmele klassile, kooliülesele analüütikale ega eKooli/Stuudiumi asendamisele. Kui aega jääb, võib audio üleslaadimine või mini-tunni salvestamine olla lisavõimalus, kuid demo põhiväärtus peab töötama ka ettevalmistatud ühe tunni andmete peal.
+Demo ei keskendu koolijuhile, mitmele klassile, kooliülesele analüütikale ega eKooli/Stuudiumi asendamisele. Esimeses versioonis töötab põhivoog simuleeritud salvestuse ja ettevalmistatud ühe tunni andmete peal. Kui tunni aeg on parasjagu käes, peab õpetaja nägema salvestuse UI-d, millega saab tundi alustada, pausile panna, jätkata, lõpetada ja seejärel tulemused genereerida.
 
 ## Põhimõtted ja piirangud
 
@@ -39,12 +39,13 @@ Demo ei keskendu koolijuhile, mitmele klassile, kooliülesele analüütikale ega
 - Esimene väärtus peab tekkima ühe tunni või ühe õppesisendi põhjal.
 - Lahendus peab olema õpetajale ajavõit, mitte uus halduskoormus.
 - Õpilasele loodud materjal peab olema piisavalt detailne, kontrollitav ja õppimiseks kasutatav.
+- Detailne õppematerjal peab toetama LaTeX-vormingut, et matemaatika, füüsika ja teiste valemitega ainete sisu oleks korrektne ja loetav.
 - Privaatsus ja nõusolek on keskne risk, eriti kui sisendiks on tunni audio. Prototüüp peab selgelt näitama, mis andmetega töötab ja mida ei salvesta.
 - Audio kustutatakse pärast töötlust. Säilitatakse ainult kirjalik õppesisu või kokkuvõte ning ka sellest tuleb eemaldada GDPR-i mõttes ebavajalikud isikunimed ja õpilastega seostatavad detailid.
 - Süsteem ei tohi jätta muljet, et see hindab õpetaja kvaliteeti või õpilasi automaatselt ilma inimliku kontrollita.
 - Hackathoni skoobis tuleb vältida kogu eKooli/Stuudiumi asendamise ehitamist; see võib olla tulevikuvisioon, mitte esimene toode.
 - Keel peab sobima Eesti koolikontekstiga. Esimene demo võib olla eesti või inglise keeles, aga sihtrühma jaoks peab lõplik kasutus olema eesti keeles arusaadav.
-- AI väljund on mustand. Õpetaja peab saama enne eksporti või jagamist muuta kokkuvõtet, PDF-i, kodutööd ja muid õpilasele minevaid osi.
+- AI väljund on mustand. Esimeses versioonis peab õpetaja saama enne jagamist muuta vähemalt kokkuvõtet, kodutööd ja kohalolekut; PDF/konspekt ja viktoriin võivad esimeses versioonis olla ettevalmistatud või genereeritud tulemused ilma täieliku muutmisvoota.
 - Lubamatud riskid on faktivead, privaatsusriskid, õpilaste nimeline mainimine õppematerjalis ning liiga pikk või ebamugav töövoog.
 
 ## Edu kriteeriumid
@@ -53,14 +54,14 @@ Demo ei keskendu koolijuhile, mitmele klassile, kooliülesele analüütikale ega
 - Õpetaja saab muuta AI loodud väljundit enne, kui see eksporditakse või õpilasele nähtavaks tehakse.
 - Õpilane saab kasutada loodud materjali kordamiseks, kontrolltööks valmistumiseks või puudutud tunni kompenseerimiseks.
 - Õpilane saab teha loodud materjali põhjal enesekontrolli viktoriini.
-- Demo näitab selgelt, miks see on õpetajale ajasääst ja õpilasele õppimises päriselt kasulik.
+- Demo näitab kvalitatiivselt, miks see on õpetajale ajasääst ja õpilasele õppimises päriselt kasulik; esimeses prototüübis ei pea ajasäästu eraldi kvantitatiivselt mõõtma.
 - Prototüüp vihjab tulevikuväärtusele koolile, näiteks teadmiste taaskasutus, klassidevaheline järjepidevus, õppematerjalide ühtlustamine või kooli sisuline teadmistebaas, kuid ei ehita seda veel välja.
 - Lahenduse privaatsusmudel on piisavalt selge, et kooli esindaja saab aru, milliseid riske peab enne päris kasutust hindama.
 
 ## Tootehüpoteesid
 
 - Kui õpetaja saab tunnist automaatselt hea kokkuvõtte ja õppematerjali, siis ta on valmis seda töövoogu katsetama.
-- Kui õpilane saab õpetaja tegeliku tunni põhjal detailse PDF-i, flashcard'id või lühiviktoriini, siis osa õpilasi kasutab seda õppimise kinnistamiseks.
+- Kui õpilane saab õpetaja tegeliku tunni põhjal detailse õppematerjali, flashcard'id või lühiviktoriini, siis osa õpilasi kasutab seda õppimise kinnistamiseks.
 - Kui koolis tekib mitme õpetaja tundidest struktureeritud teadmistebaas, siis kool võib näha väärtust õppesisu järjepidevuses ja taaskasutuses.
 - Esimene maksevalmidus võib tulla koolilt, kui lahendus seostub õpetajate ajasäästu, õppematerjalide kvaliteedi või kooli teadmuse korrastamisega.
 
@@ -72,12 +73,8 @@ Hackathoni esimene eesmärk on seega pigem kontseptsiooni tõestamine: kas õpet
 
 ## Avatud küsimused
 
-- Kas hackathoni demos on vaja päriselt audio üleslaadimist/salvestamist või piisab simuleeritud salvestusest ja ettevalmistatud tunniandmetest?
 - Milline on minimaalne nõusoleku ja privaatsuse sõnastus, mis teeb selgeks, et audio kustutatakse ning õpilasi ei jälgita ega hinnata?
-- Kui õpetaja muudab AI väljundit, siis millised osad peavad olema muudetavad esimeses demos: kokkuvõte, PDF, kodutöö, viktoriin, kohalolek?
-- Kuidas mõõta või näidata demo käigus õpetaja ajasäästu, kui päris kasutusandmeid veel ei ole?
 - Milline rahastuslugu on pitch'is kõige usutavam: kooli ost, kohaliku omavalitsuse/koolipidaja ost, riiklik programm või esialgu ainult proof of concept?
-- Kas nimi peaks olema Teacher Copilot, Teacher and Student Copilot või Class OS?
 
 ## Teadlikult skoobist väljas
 

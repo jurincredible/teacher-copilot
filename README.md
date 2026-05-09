@@ -1,73 +1,51 @@
-# Teacher Copilot
+# ClassOS
 
-Mobile-first hackathon prototype for reducing teacher admin work after and during a lesson.
+Telefonikeskne hackathoni prototüüp, mis muudab ühe tunni salvestuse või demoandmete põhjal õpetaja poolt kontrollitavaks õppesisuks ja õpilasele kasutatavaks kordamismaterjaliks.
 
-## Problem
+## Demo fookus
 
-Teachers spend too much time manually entering the same lesson information into school systems: lesson descriptions, attendance, homework, grades, and notes. The first target is the Estonian LMS eKool workflow, where a teacher often finishes the class and then still has to reconstruct what happened.
+- Õpetaja näeb päeva tunniplaani, klasse ja ühe tunni detailvaadet.
+- Õpetaja saab simuleeritud salvestust alustada, pausile panna, jätkata ja lõpetada.
+- Õpetaja saab muuta teemat, kokkuvõtet, kodutööd, tähtaega ja kohalolekut.
+- Õpetaja saab tunnile lisada manuse ning avaldada kontrollitud õppesisu õpilasele.
+- Õpilane näeb sama tunni kokkuvõtet, konspekti, võtmemõisteid, kodutööd ja puudutud tunni järeleaitavat osa.
+- Õpilane saab teha mini-viktoriini; tulemus on ainult lokaalne enesekontroll.
+- Õpetaja ja õpilase vaate vahetamine käib hamburgeri menüüst.
+- Demo QR on rakenduses eraldi nupuna, et telefoni peal kiirelt sama URL avada.
 
-## Demo Flow
+## Käivitamine
 
-1. Open `index.html`.
-2. Tap **Alusta tundi** to simulate lesson recording.
-3. Mark absent students with the roster toggles.
-4. Add or adjust homework.
-5. Tap **Genereeri logi**.
-6. Tap **Kopeeri eKooli** to simulate moving the generated entry into eKool.
+Staatiline demo töötab ilma build-sammuta:
 
-## Current Prototype
+```bash
+python -m http.server 4173 --bind 0.0.0.0
+```
 
-This version is intentionally dependency-free:
+Seejärel ava brauseris:
 
-- static HTML/CSS/JS
-- mobile-first layout
-- live recording timer simulation
-- attendance toggles
-- homework quick actions
-- generated eKool-ready lesson log
-- Estonian classroom copy
+```text
+http://127.0.0.1:4173
+```
 
-## Spec-Driven Development
+Telefoniga samas võrgus demo avamiseks kasuta arvuti lokaalset võrgu-IP-d kujul `http://<IP>:4173` või ava rakenduse QR-vaade.
 
-This repo includes a project-local spec-driven workflow:
+## Tehniline seis
 
-- `AGENTS.md` defines how Codex should work in this repository.
-- `docs/konstitutsioon.md` captures the problem, audience, constraints, and success criteria.
-- `docs/spec.md` describes the user-facing behavior and explicit non-goals.
-- `docs/prd.md` tracks implementation requirements and completion status.
-- `docs/ehituslogi.md` records decisions, discoveries, and scope changes.
+Prototüüp on teadlikult dependency-free:
 
-Before continuing implementation, read the docs in `docs/` and work one PRD requirement or user story at a time.
+- `index.html`
+- `styles.css`
+- `app.js`
 
-## Local Skills
+See hoiab hackathoni demo väikese ja väldib build-chain'i riski. Kui prototüüp liigub edasi päris tootearendusse, on mõistlik järgmine samm React/Vite või Next.js struktuur koos püsiva andmemudeli, auth'i ja päris transkriptsioonivooga.
 
-Reusable project skills live in `skills/`:
+## Spec-driven töö
 
-- `skills/spec-driven-starter` scaffolds and repairs the spec-driven workspace files.
-- `skills/frontend-design` guides distinctive, production-grade frontend design work.
+Projekti suund ja nõuded elavad `docs/` kaustas:
 
-## Hackathon Next Steps
+- `docs/konstitutsioon.md`
+- `docs/spec.md`
+- `docs/prd.md`
+- `docs/ehituslogi.md`
 
-- Add real browser audio recording with `MediaRecorder`.
-- Send audio to a transcription endpoint.
-- Use an LLM to return structured JSON:
-  - lesson title
-  - eKool journal entry
-  - homework
-  - absent students
-  - student recap
-  - teacher-private notes
-- Add teacher/class schedule data.
-- Add export views for eKool, PDF, Markdown, and LaTeX.
-- Later: investigate whether eKool has an official integration path.
-
-## Suggested Stack After Prototype
-
-- Next.js + TypeScript for the app
-- Supabase for auth, classes, students, and saved lessons
-- OpenAI for transcription and structured lesson log generation
-- Vercel for quick deploys
-
-## Product North Star
-
-The teacher leaves the classroom with the eKool entry already done.
+Enne järgmisi arendusi loe need läbi ja uuenda PRD staatust ainult ehitatud ning kontrollitud nõuete kohta.

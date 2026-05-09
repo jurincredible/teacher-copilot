@@ -3,91 +3,255 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Teacher Copilot</title>
+    <title>ClassOS prototüüp</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="app-shell">
-      <section class="phone-frame" aria-label="Teacher Copilot prototype">
-        <header class="topbar">
+    <main class="stage">
+      <section class="phone" aria-label="ClassOS telefoniprototüüp">
+        <header class="appbar">
+          <button id="menuButton" class="icon-button" type="button" aria-label="Ava menüü" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <div>
-            <p class="muted">Teacher Copilot</p>
-            <h1>Füüsika 11B</h1>
+            <p id="roleLabel" class="eyebrow">Õpetaja vaade</p>
+            <h1>ClassOS</h1>
           </div>
-          <button class="icon-button" aria-label="Settings">
-            <span aria-hidden="true">S</span>
+          <button id="qrButton" class="icon-button qr-mark" type="button" aria-label="Ava demo QR">
+            <span></span>
           </button>
         </header>
 
-        <section class="lesson-card">
-          <div class="lesson-meta">
-            <span>2. tund</span>
-            <span>09:00-09:45</span>
-            <span>A-314</span>
-          </div>
-          <h2>Elektromagnetiline induktsioon</h2>
-          <p>Valmis tunnikirjelduseks, puudujateks ja kodutööks kohe tunni ajal.</p>
-          <div class="record-row">
-            <button id="recordButton" class="record-button" type="button">
-              <span class="record-dot" aria-hidden="true"></span>
-              <span id="recordLabel">Alusta tundi</span>
-            </button>
+        <aside id="drawer" class="drawer" aria-hidden="true">
+          <div class="drawer-head">
             <div>
-              <p class="muted">Salvestus</p>
-              <strong id="timer">00:00</strong>
+              <p class="eyebrow">Demo</p>
+              <strong>Kiire rollivahetus</strong>
             </div>
+            <button id="closeMenuButton" class="ghost-button" type="button">Sulge</button>
           </div>
+          <div class="role-switch" role="group" aria-label="Vali kasutajavaade">
+            <button class="active" type="button" data-role="teacher">Õpetaja</button>
+            <button type="button" data-role="student">Õpilane</button>
+          </div>
+          <button class="menu-action" type="button" data-open-view="calendar">Päeva tunnid</button>
+          <button class="menu-action" type="button" data-open-view="classes">Klassid ja ajalugu</button>
+          <button class="menu-action" type="button" data-open-view="lesson">Avatud tund</button>
+          <button id="drawerQrButton" class="menu-action accent" type="button">Näita QR-koodi</button>
+          <p class="privacy-note">Audio on demos simuleeritud. Pärast töötlust säilib ainult õpetaja üle vaadatud kirjalik õppesisu.</p>
+        </aside>
+
+        <div id="overlay" class="overlay" hidden></div>
+
+        <section id="teacherView" class="screen active" aria-label="Õpetaja töövoog">
+          <nav class="tabs" aria-label="Õpetaja vaated">
+            <button class="active" type="button" data-open-view="calendar">Päev</button>
+            <button type="button" data-open-view="classes">Klassid</button>
+            <button type="button" data-open-view="lesson">Tund</button>
+          </nav>
+
+          <section id="calendarPanel" class="view-panel active">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Täna, 8. mai</p>
+                <h2>Päeva tunniplaan</h2>
+              </div>
+              <span class="status-pill live">praegu</span>
+            </div>
+            <div id="currentLessonPrompt" class="callout">
+              <div>
+                <strong>Kas praegu on see tund?</strong>
+                <span>11B füüsika, elektromagnetiline induktsioon</span>
+              </div>
+              <div class="split-actions">
+                <button class="primary small" type="button" data-open-view="lesson">Jah</button>
+                <button class="secondary small" type="button">Ei</button>
+              </div>
+            </div>
+            <div id="scheduleList" class="schedule-list"></div>
+          </section>
+
+          <section id="classesPanel" class="view-panel">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Minu klassid</p>
+                <h2>Klassi tunnid</h2>
+              </div>
+              <span class="status-pill">35 tundi</span>
+            </div>
+            <div id="classList" class="class-list"></div>
+            <div class="panel">
+              <div class="panel-title">
+                <h3>11B füüsika</h3>
+                <span>keritud viimasele toimunud tunnile</span>
+              </div>
+              <div id="lessonHistory" class="timeline"></div>
+            </div>
+          </section>
+
+          <section id="lessonPanel" class="view-panel">
+            <div class="lesson-hero">
+              <div>
+                <p class="eyebrow">11B füüsika · 09:00-09:45</p>
+                <h2 id="teacherTitle">Elektromagnetiline induktsioon</h2>
+              </div>
+              <span id="draftBadge" class="status-pill live">mustand</span>
+            </div>
+
+            <section class="recorder">
+              <div>
+                <p class="eyebrow">Salvestus</p>
+                <strong id="timer">00:00</strong>
+              </div>
+              <div class="recorder-actions">
+                <button id="recordButton" class="record-button" type="button">Alusta</button>
+                <button id="finishRecordButton" class="secondary" type="button">Lõpeta</button>
+              </div>
+              <p id="recordStatus" class="microcopy">Valmis simuleeritud tunnisalvestuseks.</p>
+            </section>
+
+            <section class="editor-grid">
+              <label class="field">
+                <span>Teema</span>
+                <input id="topicInput" type="text" />
+              </label>
+              <label class="field">
+                <span>Kokkuvõte</span>
+                <textarea id="summaryInput" rows="5"></textarea>
+              </label>
+              <div class="panel conspect-card" role="button" tabindex="0" data-open-conspect>
+                <div class="panel-title">
+                  <h3>Konspekt</h3>
+                  <div class="download-links" aria-label="Konspekti allalaadimine">
+                    <a href="./assets/2026-03-24.pdf" download>Lae alla PDF</a>
+                    <a href="./assets/2026-03-24_10-50.tex" download>LaTeX</a>
+                  </div>
+                </div>
+                <div id="teacherNotes" class="notes compiled-tex"></div>
+                <p class="microcopy">Puuduta, et avada kogu konspekt suuremas vaates.</p>
+              </div>
+              <label class="field">
+                <span>Kodutöö</span>
+                <textarea id="homeworkInput" rows="4"></textarea>
+              </label>
+              <label class="field">
+                <span>Tähtaeg</span>
+                <input id="dueInput" type="date" />
+              </label>
+              <label class="attachment">
+                <input id="attachmentInput" type="file" />
+                <span>Lisa tööleht, dokument või PDF</span>
+                <strong id="attachmentName">Manust pole lisatud</strong>
+              </label>
+            </section>
+
+            <section class="panel">
+              <div class="panel-title">
+                <h3>Kohalolek</h3>
+                <span id="absentCount">Kõik kohal</span>
+              </div>
+              <div class="split-actions">
+                <button id="allPresentButton" class="secondary" type="button">Kõik kohal</button>
+                <button id="resetAttendanceButton" class="secondary" type="button">Lähtesta</button>
+              </div>
+              <div id="studentList" class="student-list"></div>
+            </section>
+
+            <div class="sticky-actions">
+              <button id="generateButton" class="secondary" type="button">Genereeri tulemused</button>
+              <button id="publishButton" class="primary" type="button">Avalda õpilasele</button>
+            </div>
+          </section>
         </section>
 
-        <nav class="segmented" aria-label="Lesson sections">
-          <button class="active" type="button">Tund</button>
-          <button type="button">Õpilased</button>
-          <button type="button">Logi</button>
-        </nav>
+        <section id="studentView" class="screen" aria-label="Õpilase töövoog">
+          <section class="student-home">
+            <div class="section-title">
+              <div>
+                <p class="eyebrow">Õpilase vaade</p>
+                <h2>Leia tänane materjal</h2>
+              </div>
+              <span class="status-pill">11B</span>
+            </div>
+            <button class="subject-card active" type="button">
+              <span>Füüsika</span>
+              <strong>Elektromagnetiline induktsioon</strong>
+            </button>
+            <div id="studentLessons" class="timeline compact-list"></div>
+          </section>
 
-        <section class="panel">
+          <section class="student-detail">
+            <div class="lesson-hero">
+              <div>
+                <p id="studentMeta" class="eyebrow">Füüsika · 8. mai · 45 min</p>
+                <h2 id="studentTitle">Elektromagnetiline induktsioon</h2>
+              </div>
+              <span class="status-pill live">õpetaja kinnitatud</span>
+            </div>
+            <article class="panel readable">
+              <h3>Kokkuvõte</h3>
+              <p id="studentSummary"></p>
+            </article>
+            <article class="panel readable">
+              <h3>Kui puudusid tunnist</h3>
+              <p>Keskendu esmalt magnetvoo muutumisele: induktsioon tekib siis, kui magnetväli, pindala või kontuuri asend muutub. Seejärel vaata näidet liikuva juhtmega ja seosta suund Lenzi reegliga.</p>
+            </article>
+            <article class="panel readable conspect-card" role="button" tabindex="0" data-open-conspect>
+              <div class="panel-title inline-title">
+                <h3>Konspekt</h3>
+                <div class="download-links" aria-label="Konspekti allalaadimine">
+                  <a href="./assets/2026-03-24.pdf" download>Lae alla PDF</a>
+                  <a href="./assets/2026-03-24_10-50.tex" download>LaTeX</a>
+                </div>
+              </div>
+              <div id="studentNotes" class="compiled-tex"></div>
+              <p class="microcopy">Puuduta, et avada kogu konspekt suuremas vaates.</p>
+            </article>
+            <article class="panel readable">
+              <h3>Võtmemõisted</h3>
+              <div id="conceptList" class="concept-list"></div>
+            </article>
+            <article class="panel readable">
+              <h3>Kodutöö</h3>
+              <p id="studentHomework"></p>
+              <span id="studentDue" class="status-pill"></span>
+            </article>
+            <section class="panel quiz">
+              <div class="panel-title">
+                <h3>Mini-viktoriin</h3>
+                <span>enesekontroll</span>
+              </div>
+              <div id="quizMount"></div>
+              <button id="resetQuizButton" class="secondary full" type="button">Tee uuesti</button>
+            </section>
+          </section>
+        </section>
+
+        <dialog id="qrDialog" class="qr-dialog">
           <div class="panel-title">
-            <h3>Puudujad</h3>
-            <span id="absentCount">0 märgitud</span>
+            <h3>Demo QR</h3>
+            <button id="closeQrButton" class="ghost-button" type="button">Sulge</button>
           </div>
-          <div id="studentList" class="student-list"></div>
-        </section>
+          <img id="qrImage" alt="QR-kood demo avamiseks telefonis" />
+          <p id="demoUrl" class="microcopy"></p>
+        </dialog>
 
-        <section class="panel">
-          <label for="homework">Kodutöö</label>
-          <textarea id="homework" rows="3">Lahendada õpikust lk 142 ülesanded 3-5. Korrata Faraday seaduse sõnastus.</textarea>
-          <div class="quick-actions">
-            <button type="button" data-homework="Lisa: vaadata 8-minutilist simulatsiooni magnetvoost.">+ simulatsioon</button>
-            <button type="button" data-homework="Lisa: teha lühike enesetest eKoolis.">+ test</button>
+        <dialog id="conspectDialog" class="conspect-dialog">
+          <header class="modal-head">
+            <div>
+              <p class="eyebrow">Kogu konspekt</p>
+              <h3>Lenzi reegel, induktsioonivool ja rakendused</h3>
+            </div>
+            <button id="closeConspectButton" class="ghost-button" type="button">Sulge</button>
+          </header>
+          <div class="download-links modal-links" aria-label="Konspekti allalaadimine">
+            <a href="./assets/2026-03-24.pdf" download>Lae alla PDF</a>
+            <a href="./assets/2026-03-24_10-50.tex" download>LaTeX</a>
           </div>
-        </section>
-
-        <section class="panel">
-          <div class="panel-title">
-            <h3>AI tunnilogi</h3>
-            <span id="logStatus">mustand</span>
-          </div>
-          <div id="lessonLog" class="lesson-log">
-            <p><strong>Teema:</strong> elektromagnetiline induktsioon ja magnetvoog.</p>
-            <p><strong>Tunni kirjeldus:</strong> Õpilased tuletasid meelde magnetvälja mõiste, arutasid Faraday induktsiooniseadust ning lahendasid näiteülesande liikuva juhtmega.</p>
-            <p><strong>Kodutöö:</strong> Lahendada õpikust lk 142 ülesanded 3-5.</p>
-          </div>
-          <div class="action-grid">
-            <button id="generateButton" class="primary" type="button">Genereeri logi</button>
-            <button id="copyButton" type="button">Kopeeri eKooli</button>
-          </div>
-        </section>
-
-        <section class="panel compact">
-          <div class="metric">
-            <span>Hinnanguline võit</span>
-            <strong id="savedTime">7 min</strong>
-          </div>
-          <div class="metric">
-            <span>Valmidus</span>
-            <strong>demo</strong>
-          </div>
-        </section>
+          <article id="conspectBody" class="compiled-tex full-tex"></article>
+        </dialog>
       </section>
     </main>
 

@@ -1,0 +1,436 @@
+\documentclass[a4paper,11pt]{article}
+\input{shared/preamble.tex}
+\input{shared/style_worksheet.tex}
+
+\title{Lenzi reegel, induktsioonivool ja rakendused}
+\author{11. klass \\ Tallinna Reaalkool}
+\date{24. märts 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Tunni algus ja korralduslik}
+
+Tunni alguses mainis õpetaja, et katsetab salvestiste automaatset teisendamist, et tunni materjal jõuaks kiiremini kasutatavasse vormi ning oleks hiljem õpilastele kättesaadav. Seejärel tuletati meelde eelmise tunni sisu: sissejuhatus elektromagnetismi, täpsemalt elektromagnetilise induktsiooni teemasse, magnetvoog, Faraday induktsiooniseadus ja Lenzi reegel.
+
+Tänase tunni põhirõhk ei olnud uue teooria lisamisel, vaid ülesannete lahendamisel sama töölehe põhjal. Õpetaja rõhutas, et eriti palju tuleb harjutada just Lenzi reegli kasutamist, sest suur osa ülesannetest küsib, mis suunas hakkab liikuma induktsioonivool või milline peab olema magneti poolus, et joonisel kujutatud olukord toimiks.
+
+Õpetaja nimetas töölehelt ülesandeid, millega tunni jooksul ja kodus tegeleda. Numbrid käisid mitmest plokist, kuid tunni jooksul lahendati koos eelkõige näiteid ülesannetüüpidest, mis puudutasid puuduva pooluse, liikumissuuna või voolusuuna leidmist. Eraldi vaadati näiteid ülesannetest 24, 27 ja 30 ning viidati ka ülesannetele 21 ja 22.
+
+\section{Eelmise tunni põhiidee: elektromagnetiline induktsioon}
+
+Tuletati meelde, et elektromagnetilise induktsiooni mõte on järgmine: kui magnetvoog läbi kontuuri ajas muutub, siis tekib kontuuris elektromotoorjõud ja suletud kontuuri korral ka induktsioonivool. Faraday seaduse kuju, millele tunnis toetuti, on
+
+\[
+\mathcal{E}_i = -N\frac{\Delta \Phi}{\Delta t},
+\]
+
+kus \(N\) on keerdude arv ja \(\Phi\) on magnetvoog. Miinusmärk väljendab Lenzi reeglit: tekkiv induktsioonivool on alati sellise suunaga, et tema tekitatud magnetväli \emph{takistab} algse magnetvoo muutust.
+
+See on kogu teema keskne mõte. Kui väline magnetvoog suureneb, siis kontuur ``ei taha'', et see suureneks, ning tekitab vastassuunalise magnetvälja. Kui väline magnetvoog väheneb, siis kontuur ``ei taha'', et see väheneks, ning tekitab samasuunalise magnetvälja, et algset olukorda säilitada.
+
+\section{Katseseade: suletud ja avatud alumiiniumrõngas}
+
+Õpetaja näitas vana katseseadet, mis oli tasakaaluasendis ja sai üsna vabalt liikuda. Seadmel oli kaks alumiiniumist rõngast. Oluline tähelepanek oli see, et alumiinium ise ei ole siin püsimagnet; rõngaste käitumine ei tule mitte sellest, et tegu oleks ``magnetilise'' ainega, vaid induktsioonist.
+
+Üks rõngastest oli \emph{suletud kontuur}, teine aga väikese katkestusega ehk \emph{avatud kontuur}. See vahe on otsustava tähtsusega.
+
+Õpetaja viis magneti suletud rõnga lähedale. Kui magnet rõngasse sisenes ehk liikus kontuurile lähemale, hakkas seade liikuma. Kui magnet ära tõmmati, jäi liikumine seisma või muutis süsteem oma käitumist vastavalt muutuse suunale. Põhiidee oli järgmine:
+
+\begin{itemize}
+    \item kui magnet läheneb suletud rõngale, muutub magnetvoog läbi rõnga;
+    \item selle tõttu tekib rõngas induktsioonivool;
+    \item induktsioonivool tekitab oma magnetvälja;
+    \item see magnetväli on Lenzi reegli kohaselt suunatud nii, et takistada algset muutust.
+\end{itemize}
+
+Sama katset tehti avatud rõngaga. Avatud kontuuris ei saa suletud vooluringi moodustuda, seega ei teki sinna püsivat induktsioonivoolu. Selle tõttu ei teki ka niisugust vastasmõju nagu suletud rõnga puhul. Õpetaja rõhutas väga selgelt: \emph{avatud kontuuriga ei juhtu sisuliselt mitte midagi}. See oli oluline meeldetuletus eelmise tunni vaatlusest.
+
+Seega näitas katse väga hästi, et Lenzi reegel ei ole pelgalt sümbol valemis, vaid kirjeldab reaalselt mõõdetavat nähtust: suletud metallkontuur hakkab muutuvat magnetvälja ``vastu töötama''.
+
+\section{Kuidas Lenzi reegli ülesandeid süstemaatiliselt lahendada}
+
+Õpetaja soovis sõnastada kindla lahendusalgoritmi, sest enamik töölehe ülesandeid on sama loogikaga. Tavaliselt on meil kolm elementi:
+
+\begin{enumerate}
+    \item püsimagneti või allikavälja poolus või väli,
+    \item liikumise suund,
+    \item induktsioonivoolu või indutseeritud magnetvälja suund kontuuris.
+\end{enumerate}
+
+Nendest kolmest on üks tavaliselt puudu ning see tuleb leida.
+
+Õpetaja pakkus välja järgmise töökorra.
+
+\subsection{1. Määra välise magnetvälja suund läbi kontuuri}
+
+Kõigepealt tuleb vaadata, milline on \emph{väline} magnetväli kontuuri asukohas. Kui tegemist on püsimagnetiga, tuleb kasutada teadmist, et magnetvälja jõujooned väljuvad põhjapoolusest ja sisenevad lõunapoolusesse.
+
+Seega tuleb esmalt aru saada, kas joonisel on väline magnetväli läbi kontuuri suunatud näiteks üles, alla või mingis muus joonisel kokkulepitud suunas.
+
+\subsection{2. Otsusta, kas väline magnetvoog suureneb või väheneb}
+
+See samm on kõige olulisem. Tuleb küsida:
+
+\begin{quote}
+Kas väline magnetväli selles kontuuris muutub tugevamaks või nõrgemaks?
+\end{quote}
+
+Magneti puhul on praktiline mõelda nii:
+
+\begin{itemize}
+    \item kui magnet tuleb kontuurile lähemale, siis tema välja mõju kontuuris tavaliselt \emph{suureneb};
+    \item kui magnet liigub eemale, siis tema välja mõju kontuuris \emph{väheneb}.
+\end{itemize}
+
+Õpetaja soovitas seda endale lausa füüsiliselt ette kujutada jõujoonte tihedusena: kui magnet on lähemal, läbib kontuuri rohkem jõujooni; kui kaugemal, siis vähem.
+
+\subsection{3. Kasuta Lenzi reeglit}
+
+Kui on selge, kas väline magnetvoog suureneb või väheneb, siis tuleb otsustada, mida kontuur ``tahab teha''.
+
+\begin{itemize}
+    \item Kui väline magnetvoog \emph{suureneb}, siis kontuur tekitab sellele \emph{vastassuunalise} magnetvälja.
+    \item Kui väline magnetvoog \emph{väheneb}, siis kontuur tekitab \emph{samasuunalise} magnetvälja, et vähenemist kompenseerida.
+\end{itemize}
+
+Õpetaja sõnastas selle intuitiivselt: kontuur püüab säilitada algset olukorda.
+
+\subsection{4. Leia voolu suund parema käe reegliga}
+
+Kui indutseeritud magnetvälja suund on teada, saab parema käe haaramisreegli abil leida voolu suuna kontuuris. See tähendab:
+
+\begin{quote}
+Kui parema käe pöial näitab magnetvälja suunda, siis kõverdunud sõrmed näitavad voolu suunda kontuuris.
+\end{quote}
+
+Õpetaja rõhutas, et ülesannete lahendamisel tuleb neid samme korduvalt läbi harjutada, kuni loogika muutub loomulikuks.
+
+\section{Näide töölehelt: ülesande 24 esimene juht}
+
+Koos lahendati kõigepealt näide, kus magnet läheneb kontuurile põhjapoolusega.
+
+Olukord oli järgmine:
+
+\begin{itemize}
+    \item püsimagneti põhjapoolus on suunatud kontuuri poole;
+    \item magnet liigub kontuurile lähemale, joonisel ülevalt alla;
+    \item leida tuleb, milline on indutseeritud voolu suund.
+\end{itemize}
+
+Lahendus kulges samm-sammult.
+
+\subsection{Välise magnetvälja suund}
+
+Kuna magneti põhjapoolusest väljuvad jõujooned, siis kontuuri asukohas on väline magnetväli selles joonises suunatud alla.
+
+\subsection{Kas väline magnetvoog suureneb või väheneb?}
+
+Magnet liigub kontuurile lähemale. See tähendab, et sama suunaga väline magnetväli kontuuris \emph{suureneb}. Õpetaja rõhutas, et see tuleb kindlasti endale selgeks teha: lähemale tulev magnet tähendab tugevamat välja kontuuri piirkonnas.
+
+\subsection{Lenzi reegel}
+
+Kuna allapoole suunatud väline magnetväli suureneb, peab kontuur sellele vastu töötama. Seega tekitab kontuur \emph{ülespoole} suunatud indutseeritud magnetvälja.
+
+See ongi Lenzi reegli sisu antud olukorras: kui väljastpoolt surutakse magnetvoogu juurde, siis kontuur püüab seda suurenemist pidurdada.
+
+\subsection{Voolu suund kontuuris}
+
+Kui indutseeritud magnetväli peab olema suunatud ülespoole, siis parema käe reegli abil leitakse sellele vastav voolu suund kontuuris. Tunnis järeldati, et kontuuris peab tekkima just niisugune vool, mis annab ülespoole suunatud magnetvälja.
+
+Õpetaja toonitas, et joonise puhul tuleb alati olla väga tähelepanelik vaatesuuna suhtes: samale füüsikalisele olukorrale võib eri vaatesuunast vastata vastupäeva või päripäeva vool, kuid \emph{määrav} on see, millise suunaga magnetväli vool tekitab.
+
+\section{Puuduva pooluse leidmine: sama ülesandetüübi teine näide}
+
+Seejärel võttis õpetaja sama tüüpi ülesannete seast näite, kus magneti poolus oli puudu, kuid antud olid magneti liikumissuund ja voolu suund kontuuris.
+
+Mõte oli näidata, et sama algoritm töötab ka tagurpidi.
+
+Olukord oli järgmine:
+
+\begin{itemize}
+    \item magnet liigub joonisel allapoole ehk eemaldub kontuurist;
+    \item kontuuris tekkiva voolu suund on ette antud;
+    \item selle voolu põhjal tuleb määrata indutseeritud magnetvälja suund;
+    \item seejärel otsustada, milline magneti poolus peab olema kontuurile lähemal.
+\end{itemize}
+
+\subsection{Alustame tagajärjest: voolu suunast}
+
+Kuna voolu suund oli joonisel antud, sai parema käe reegli abil järeldada, et kontuuri indutseeritud magnetväli on suunatud alla.
+
+See tähendab, et kontuur ``valis'' allapoole suunatud magnetvälja.
+
+\subsection{Rakendame Lenzi reeglit}
+
+Magnet liigub kontuurist eemale. Kui väline väli nõrgeneb, tahab kontuur säilitada endist olukorda. Seega peab indutseeritud magnetväli olema \emph{samasuunaline} algse välise magnetväljaga.
+
+Kuna indutseeritud väli on alla, peab ka väline magnetväli kontuuris olema alla ja samal ajal vähenema.
+
+\subsection{Järelikult milline poolus?}
+
+Sellest järeldas õpetaja, et kontuurile lähemal peab olema \emph{lõunapoolus}. Just sellisel juhul on välise magnetvälja suund joonisel sobiv ning selle välja vähenemist saab kontuur kompenseerida allapoole suunatud indutseeritud väljaga.
+
+Õpetaja tõi siin olulise intuitiivse selgituse, et olukorda tuleb vaadata kahes ajamomendis.
+
+\paragraph{Esimene hetk.}
+Magnet on kontuurile lähemal. Seetõttu läbib kontuuri rohkem vastavas suunas jõujooni.
+
+\paragraph{Teine hetk.}
+Magnet on allapoole liikunud ja on kontuurist kaugemal. Nüüd läbib kontuuri vähem samasuunalisi jõujooni.
+
+Kontuur ``ütleb'' selles olukorras sisuliselt: \emph{ära lase sellel väljal kaduda, ma tahan algset olukorda säilitada}. Sellepärast tekitab ta juurde samasuunalist magnetvälja.
+
+Õpetaja rõhutas, et just niisugune ``enne ja pärast'' mõtlemine aitab kõige paremini vältida segadust.
+
+\section{Märkus harjutamise kohta}
+
+Selles kohas rõhutas õpetaja, et seda tüüpi ülesanded muutuvad arusaadavaks ainult harjutamisega. Üksik näide klassi ees võib tunduda loogiline, kuid oskus tekib siis, kui sama mõttekäik tehakse korduvalt iseseisvalt läbi.
+
+Seetõttu anti õpilastele aega töölehe ülesandeid ise lahendada ning õpetaja liikus klassis ringi ja aitas individuaalselt.
+
+\section{Näide töölehelt: ülesande 27 esimene juht}
+
+Seejärel lahendati koos veel üks näide teisest ülesandetüübist. Seal oli tegemist ringjuhtmega, milles vool oli ette antud, ning liikumisega teise kontuuri suhtes.
+
+Õpetaja sõnastas selle põhiolukorra nii:
+
+\begin{itemize}
+    \item ringjuhtmes voolab vool vastupäeva;
+    \item see ring liigub alla;
+    \item leida tuleb uuritavas kontuuris induktsioonivoolu suund.
+\end{itemize}
+
+Kuna täpne joonis oli töölehel, lähtuti joonisel nähtavast ruumipaigutusest. Õpetaja järeldas selle põhjal järgmise.
+
+\subsection{Välise magnetvälja suund}
+
+Parema käe reegli järgi tekitab antud suunaga vool uuritava kontuuri piirkonnas \emph{ülespoole} suunatud magnetvälja.
+
+\subsection{Kas väline väli suureneb või väheneb?}
+
+Joonisel oleva liikumise tõttu see väline ülespoole suunatud magnetväli uuritava kontuuri piirkonnas \emph{väheneb}. Õpetaja ütles selle väga otse välja: \(B\) väheneb.
+
+\subsection{Lenzi reegel}
+
+Kui ülespoole suunatud väline magnetvoog väheneb, siis kontuur peab sellele vähenemisele vastu töötama. Seega peab ka kontuur ise tekitama \emph{ülespoole} suunatud magnetvälja.
+
+\subsection{Voolu suund}
+
+Parema käe reegli järgi tuleb nüüd valida niisugune voolu suund, mis annaks ülespoole suunatud välja. Tunnis järeldati, et tekkiv vool on joonisel samatüübilise suunaga nagu selles võrdlusolukorras, millele õpetaja osutas.
+
+Selle näite põhisõnum oli, et lahendusalgoritm ei muutu:
+
+\begin{enumerate}
+    \item leia välise magnetvälja suund;
+    \item otsusta, kas see suureneb või väheneb;
+    \item rakenda Lenzi reeglit;
+    \item leia voolu suund parema käe reegliga.
+\end{enumerate}
+
+\section{Täpsustav selgitus katsele: lähenemine ja eemaldumine}
+
+Individuaalse abi käigus rõhutas õpetaja veel kord ka katseseadme loogikat, kus rõngas ripub kahe niidi otsas ning magnetit liigutatakse selle poole või sellest eemale.
+
+Selle olukorra saab sõnastada nii.
+
+\subsection{Kui magnet läheneb}
+
+Kui magnet liigub suletud rõngale lähemale, siis magnetvoog läbi rõnga suureneb. Rõngas tekitab sellise voolu, mille tekitatud magnetväli on muutusele vastassuunaline. Seetõttu tõukub süsteem nii, et lähenemist ``ei lubataks vabalt toimuda''.
+
+\subsection{Kui magnet eemaldub}
+
+Kui magnet liigub eemale, siis magnetvoog läbi rõnga väheneb. Nüüd tahab rõngas säilitada senist magnetvoogu ja tekitab samasuunalise magnetvälja. Selle tulemusel käitub süsteem nii, et rõngas püüab justkui muutusele ``järgneda''.
+
+Seda võib lühidalt kokku võtta nii:
+
+\begin{quote}
+Lenzi reegel tähendab alati, et süsteem töötab muutusele vastu, mitte tingimata ainult ühele kindlale liikumissuunale.
+\end{quote}
+
+\section{Ülesanne 30: pöörlev kontuur ja generaatori tööpõhimõte}
+
+Tunni järgmine suurem teema oli töölehe ülesanne, kus kontuur pöörleb homogeenses magnetväljas. Õpetaja ütles otsesõnu, et seesama skeem ei ole tegelikult midagi muud kui \emph{elektrigeneraatori tööpõhimõte}.
+
+Vaadati ülesande 30 teist punkti: \emph{millistel juhtudel tekib kontuuris induktsioonivool?}
+
+\subsection{Induktsioonivool tekib siis, kui magnetvoog muutub}
+
+Alustati kõige üldisemast põhimõttest: induktsioonivool tekib siis, kui magnetvoog ajas muutub. Selle matemaatiline väljendus on
+
+\[
+\mathcal{E}_i = -N\frac{\Delta \Phi}{\Delta t}.
+\]
+
+Kui \(\Phi\) ei muutu, siis ei teki ka induktsioonivoolu.
+
+\subsection{Magnetvoo valem pöörleva kontuuri korral}
+
+Kui kontuur on tasapinnaline ja väli homogeenne, siis magnetvoog on
+
+\[
+\Phi = BS\cos\alpha,
+\]
+
+kus
+\begin{itemize}
+    \item \(B\) on magnetinduktsioon,
+    \item \(S\) on kontuuri pindala,
+    \item \(\alpha\) on nurk magnetvälja ja pinna normaali vahel.
+\end{itemize}
+
+Õpetaja rõhutas siin, et tuleb mõelda just \emph{pinna normaali} peale. Pinna normaal on mõtteline sirge, mis on pinnaga risti.
+
+\subsection{Millal on magnetvoog maksimaalne ja millal null?}
+
+Kui pinna normaal on magnetväljaga samas suunas, siis \(\alpha = 0\) ja
+
+\[
+\cos 0 = 1.
+\]
+
+Siis on magnetvoog maksimaalne. Intuitiivselt tähendab see, et kõige rohkem jõujooni ``läheb pinnast läbi''.
+
+Kui kontuur pöördub nii, et pinna normaal on magnetväljaga risti, siis \(\alpha = 90^\circ\) ja
+
+\[
+\cos 90^\circ = 0.
+\]
+
+Siis on magnetvoog null. Õpetaja kirjeldas seda kujutluspildina: jõujooned liiguvad küll mööda, aga ei läbi enam kontuuri pinda.
+
+\subsection{Miks pöörlevas kontuuris tekib vool?}
+
+Kui kontuur pidevalt pöörleb, siis magnetvoog muutub perioodiliselt:
+
+\[
+\Phi_{\max} \rightarrow 0 \rightarrow \Phi_{\max} \rightarrow 0 \rightarrow \cdots
+\]
+
+Seega muutub magnetvoog kogu aeg ajas ja järelikult tekib kontuuris pidevalt indutseeritud elektromotoorjõud ning suletud kontuuri korral ka vool.
+
+See ongi generaatori töö tuum.
+
+\subsection{Milline jõud paneb laengud liikuma?}
+
+Õpetaja vastas ülesande sõnastusele praktilises võtmes: laengute suunatud liikumise taga on see \emph{väline jõud või ajam}, mis paneb kontuuri pöörlema. Kui kontuur ei pöörleks, ei muutuks magnetvoog ja induktsioonivoolu ei tekiks.
+
+Näidetena nimetati, et selliseks ajamiks võib olla näiteks vesi, gravitatsioonist tulenev liikumine või mõni muu mehaaniline jõud. Nii toimivad ka elektrijaamad: mingi väline energiaallikas paneb süsteemi pöörlema, pöörlemine muudab magnetvoogu ja sellest tekib elekter.
+
+\subsection{Induktsioonivoolu suuna muutumine}
+
+Edasi arutati voolu suunda.
+
+Kui pöörlemise käigus hakkab välise magnetvälja kindlasuunaline magnetvoog läbi kontuuri \emph{suurenema}, siis Lenzi reegli järgi tekitab kontuur vastassuunalise sisemise magnetvälja. Sellele vastab üks voolu suund.
+
+Kui kontuur pöörleb edasi ja jõuab asendisse, kust alates väline magnetvoog hakkab \emph{vähenema}, siis peab kontuur vähenemisele vastu töötama. Nüüd tekitab ta samasuunalise magnetvälja ning voolu suund \emph{pöördub ümber}.
+
+Seega muutub voolu suund perioodiliselt.
+
+\subsection{Järeldus: generaatori väljund on vahelduvvool}
+
+Õpetaja järeldas siit väga olulise tulemuse:
+
+\begin{quote}
+Sellise pöörleva kontuuri väljund on vahelduvvool.
+\end{quote}
+
+Kui joonistada voolutugevus ajafunktsioonina, siis saadakse perioodiline kõver, mis vaheldumisi võtab positiivseid ja negatiivseid väärtusi. Põhjus ei ole juhuslik, vaid tuleb otseselt Lenzi reeglist ja magnetvoo perioodilisest muutumisest.
+
+\section{Ülesanded 21 ja 22: alumiiniumrõngas kahe niidi otsas}
+
+Tunni lõpuosas viidati veel töölehe joonisele, kus \emph{suletud alumiiniumrõngas ripub lae küljes kahe niidi abil} ja sellele lähendatakse magnetit.
+
+Õpetaja palus selle joonise vihikusse teha või vähemalt sellest pildi teha, sest see on väga iseloomulik elektromagnetilise induktsiooni näide.
+
+Seadeldise kirjeldus on järgmine:
+
+\begin{itemize}
+    \item lae küljes ripub kahe niidi otsas alumiiniumrõngas;
+    \item rõngas on suletud kontuur;
+    \item selle poole tuuakse magnet;
+    \item küsitakse, mida rõngas teeb siis, kui magnetit lähendada või eemaldada.
+\end{itemize}
+
+Selle ülesande lahendamisel tuleb kasutada täpselt sama loogikat nagu eelmistes näidetes:
+
+\begin{enumerate}
+    \item selgitada välja, mis suunas on väline magnetväli läbi rõnga;
+    \item otsustada, kas magneti liikumisel see suureneb või väheneb;
+    \item määrata Lenzi reegli järgi indutseeritud magnetvälja suund;
+    \item teha sellest järeldus rõnga liikumise kohta.
+\end{enumerate}
+
+Kuigi seda ülesannet tunnis lõpuni lahti ei kirjutatud, oli mõte selge: sama põhimõte, mis eelnevas demonstratsioonis katseseadmega, tuleb nüüd joonise ja arutluse abil ise läbi teha.
+
+\section{Rakendus: induktsioonpliit}
+
+Tunni lõpus ei mindud enam uue teooriaga edasi, kuid õpetaja tahtis rääkida elektromagnetilise induktsiooni rakendustest. Esimene näide oli \emph{induktsioonpliit}.
+
+\subsection{Mis on induktsioonpliidi sees?}
+
+Õpetaja selgitas, et induktsioonpliidi sees on juhtmespiraal ehk mähis. Kui selles mähises voolu kiiresti muuta, siis muutub ka mähise tekitatud magnetväli. Videos mainiti suure sageduse suurusjärku, umbes \SI{50}{\kilo\hertz}, mis tähendab kümneid tuhandeid muutusi sekundis.
+
+\subsection{Miks pliit ei kuumuta lihtsalt kõike?}
+
+Õpetaja tõi välja olulise tähelepaneku: kui käsi viia pliidile lähedale, ei hakka käsi samal viisil kuumenema nagu metallnõu. Tunnis sõnastati põhjus intuitiivselt nii, et käsi ei käitu selles olukorras nagu sobiv metallkontuur, milles tekiksid tugevad pöörisvoolud.
+
+Kui aga panna pliidile raudese või muu sobiv metallnõu, siis muutuv magnetväli indutseerib metalli sees voolud.
+
+\subsection{Pöörisvool}
+
+Õpetaja küsis ka ingliskeelse sõna \emph{eddy current} eestikeelse vaste kohta ja rõhutas, et see on \emph{pöörisvool}.
+
+Pöörisvoolud on indutseeritud voolud, mis tekivad juhtivas kehas suletud radadena, kui keha läbib muutuv magnetväli. Metallesemes ei ole tegemist üheainsa lihtsa rõngaga, vaid paljude võimalike vooluradadega kehas endas.
+
+\subsection{Miks metall kuumeneb?}
+
+Õpetaja joonistas seletuseks lihtsa skeemi: altpoolt on mähis, üleval metallist kontuur või pott. Kui mähise voolu suund ja tugevus kiiresti muutuvad, muutub kiiresti ka magnetväli. Selle tagajärjel tekivad metallnõus pöörisvoolud.
+
+Need voolud liiguvad metallis edasi-tagasi eri radadel. Kuna metallil on elektritakistus, siis elektrienergia muundub soojuseks samal põhimõttel nagu takistis. Õpetaja võrdles seda takisti soojenemisega: kui vool läbib takistust, siis keha kuumeneb.
+
+Seega:
+
+\begin{itemize}
+    \item muutuv vool pliidi mähises tekitab muutuva magnetvälja;
+    \item muutuv magnetväli tekitab metallnõus pöörisvoolud;
+    \item metallnõu takistus muudab selle energia soojuseks;
+    \item nõu läheb kuumaks ja soojendab toitu.
+\end{itemize}
+
+Õpetaja rõhutas, et see on väga hea ja väga praktiline näide elektromagnetilise induktsiooni kasutamisest igapäevaelus.
+
+\section{Rakendus: magnetkaart}
+
+Teise rakendusena toodi magnetkaardid.
+
+Õpetaja kirjeldas põhimõtet nii, et magnetriba peal on väga palju väikseid magnetiseeritud piirkondi. Need vahelduvad ning kodeerivad infot, mida võib mõelda nullide ja ühtedena.
+
+Kui kaart liigutatakse lugemisseadmest läbi, siis muutub lugemispea juures magnetväli ajas. See muutuv magnetväli indutseerib seadme poolis väikese pinge. Elektroonika mõõdab neid väikseid pingemuutusi ning taastab nende põhjal kaardile kirjutatud bitijada.
+
+Seega töötab ka magnetkaart samal üldpõhimõttel:
+
+\begin{itemize}
+    \item muutuv magnetväli,
+    \item sellest indutseeritud pinge,
+    \item signaali lugemine ja tõlgendamine.
+\end{itemize}
+
+Õpetaja rõhutas, et ka see on otsene elektromagnetilise induktsiooni rakendus.
+
+\section{Kokkuvõte}
+
+Selles tunnis kinnistati peamiselt Lenzi reegli kasutamist.
+
+Põhisõnumid olid järgmised.
+
+\begin{itemize}
+    \item Suletud kontuuris tekib induktsioonivool siis, kui magnetvoog läbi kontuuri muutub.
+    \item Lenzi reegli järgi on induktsioonivool alati sellise suunaga, et tema tekitatud magnetväli \emph{takistab} algset muutust.
+    \item Ülesannete lahendamisel tuleb järjest teha neli sammu: määrata välise välja suund, otsustada kas see suureneb või väheneb, leida indutseeritud välja suund ja lõpuks määrata voolu suund parema käe reegliga.
+    \item Avatud kontuuris ei teki samal viisil induktsioonivoolu nagu suletud kontuuris.
+    \item Pöörlev kontuur magnetväljas on generaatori mudel ning annab vahelduvvoolu.
+    \item Induktsioonpliit ja magnetkaart on reaalsed näited elektromagnetilise induktsiooni rakendamisest.
+\end{itemize}
+
+\end{document}
